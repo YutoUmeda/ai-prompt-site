@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>noteの記事構成をClaudeで作る方法【テンプレ付き】| プロンプトラボ</title>
+  <meta name="description" content="ハウツー・体験談・考察など3パターンの基本テンプレ＋ジャンル別6パターン＋有料note向け3パターンのClaudeプロンプトを無料公開。">
+  <meta property="og:title" content="noteの記事構成をClaudeで作る方法【テンプレ付き】">
+  <meta property="og:type" content="article">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .breadcrumb a:hover { color: #a78bfa; }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    p { margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    li { margin-bottom: .4rem; line-height: 1.7; }
+    strong { color: #e0e0f8; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; transition: border-color .2s; }
+    .scene-card:hover { border-color: #2e2e4e; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-num.paid { background: rgba(251,191,36,.15); color: #fbbf24; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; transition: background .2s; }
+    .copy-btn:hover { background: rgba(167,139,250,.28); }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .6rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .6rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; text-align: center; }
+    td:first-child { text-align: left; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(167,139,250,.04); }
+    .tip-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0 1rem; }
+    .tip-title { font-size: .88rem; font-weight: 700; color: #e0e0f8; margin-bottom: .4rem; }
+    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
+    .btn-secondary:hover { background: rgba(167,139,250,.1); }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .paid-section { background: linear-gradient(135deg, #1a1208 0%, #16161e 100%); border: 1px solid rgba(251,191,36,.2); border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
+  <div class="nav-links">
+    <a href="/">職種別</a>
+    <a href="/">用途別</a>
+    <a href="/">副業</a>
+    <a href="/">無料PDF</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">トップ</a> &rsaquo; <a href="/">副業・ライター</a> &rsaquo; noteをClaudeで構成
+  </div>
+
+  <span class="article-label">note / 副業</span>
+  <h1>noteの記事構成をClaudeで作る方法<br>【テンプレ付き】</h1>
+  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+
+  <div class="lead">
+    noteを書きたいのに、構成で手が止まっていませんか？<br><br>
+    「何を書けばいいかわからない」「途中で話が脱線する」「書き始めるまでに時間がかかる」。noteを書いている人の多くが、文章そのものではなく<strong>構成作りに悩んでいます</strong>。<br><br>
+    Claudeにテーマや伝えたい内容を入力するだけで、自然な流れの記事構成を短時間で作成できます。基本3テンプレ＋ジャンル別6パターン＋有料note向け3パターンをすべて公開します。
+  </div>
+
+  <!-- 理由 -->
+  <h2>ClaudeがnoteのAI執筆に向いている理由</h2>
+  <div class="merit-grid">
+    <div class="merit-card">
+      <div class="merit-icon">📝</div>
+      <div class="merit-title">長文生成が得意</div>
+      <div class="merit-desc">記事全体の流れを崩さずに構成を作れる。</div>
+    </div>
+    <div class="merit-card">
+      <div class="merit-icon">🗣️</div>
+      <div class="merit-title">自然な文体</div>
+      <div class="merit-desc">機械的な印象になりにくく、人間らしい文章を生成する。</div>
+    </div>
+    <div class="merit-card">
+      <div class="merit-icon">💭</div>
+      <div class="merit-title">感情表現が豊か</div>
+      <div class="merit-desc">体験談や考察記事との相性が良く、共感・ストーリー性を構成段階から意識できる。</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 基本テンプレ -->
+  <h2>note記事の基本構成テンプレ（3パターン）</h2>
+
+  <div class="scene-card">
+    <div class="scene-num">①</div>
+    <div class="scene-title">ハウツー型（〇〇の方法・やり方系）</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+以下の流れでnote構成を作成してください。
+
+・導入
+・なぜ重要なのか
+・具体的な手順
+・よくある失敗
+・まとめ</pre>
+    </div>
+    <p class="tip-note">初心者向けを前提にすると読みやすくなる</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">②</div>
+    <div class="scene-title">体験談型（やってみた・実録系）</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+体験談noteの構成を作成してください。
+
+・始める前の状況
+・実際にやったこと
+・結果
+・学んだこと
+・読者へのメッセージ</pre>
+    </div>
+    <p class="tip-note">感情の変化を入れると共感されやすい</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">③</div>
+    <div class="scene-title">考察・意見型（〇〇について思うこと系）</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+考察記事の構成を作成してください。
+
+・問題提起
+・背景説明
+・自分の意見
+・反対意見への考察
+・結論</pre>
+    </div>
+    <p class="tip-note">意見だけでなく理由も必ず含める</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ジャンル別 -->
+  <h2>ジャンル別プロンプト（6パターン）</h2>
+
+  <div class="scene-card">
+    <div class="scene-num">④</div>
+    <div class="scene-title">副業・お金系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+副業系noteの構成を作成してください。
+
+・悩み
+・解決策
+・実践手順
+・実例
+・注意点</pre>
+    </div>
+    <p class="tip-note">収益化までの流れを具体化する</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">⑤</div>
+    <div class="scene-title">キャリア・転職系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+転職・キャリア系note構成を作成してください。
+
+・悩み
+・体験談
+・学び
+・アドバイス</pre>
+    </div>
+    <p class="tip-note">転職前後の変化を盛り込む</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">⑥</div>
+    <div class="scene-title">趣味・ライフスタイル系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+趣味系noteの構成を作成してください。
+
+・始めた理由
+・魅力
+・おすすめポイント
+・初心者向けアドバイス</pre>
+    </div>
+    <p class="tip-note">好きな理由を具体的に書く</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">⑦</div>
+    <div class="scene-title">ビジネス・マーケ系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+ビジネス系noteの構成を作成してください。
+
+・現状の課題
+・分析
+・解決策
+・実践例
+・まとめ</pre>
+    </div>
+    <p class="tip-note">数字や実績を加えると説得力が増す</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">⑧</div>
+    <div class="scene-title">学び・自己啓発系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+学習系noteの構成を作成してください。
+
+・学んだきっかけ
+・重要ポイント
+・実践方法
+・得られた成果</pre>
+    </div>
+    <p class="tip-note">再現性を意識する</p>
+  </div>
+
+  <div class="scene-card">
+    <div class="scene-num">⑨</div>
+    <div class="scene-title">日記・エッセイ系note</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+エッセイ形式の構成を作成してください。
+
+・出来事
+・感じたこと
+・考えたこと
+・読者への問いかけ</pre>
+    </div>
+    <p class="tip-note">オチを無理に作らなくてもよい</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 有料note -->
+  <h2>有料note向けプロンプト（3パターン）</h2>
+
+  <div class="paid-section">
+    <div class="scene-num paid">⑩</div>
+    <div class="scene-title">有料記事のタイトル・目次生成</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+有料note向けに
+
+・タイトル10案
+・目次案
+
+を作成してください。</pre>
+    </div>
+    <p class="tip-note">読者が得られる成果を明確にする</p>
+  </div>
+
+  <div class="paid-section">
+    <div class="scene-num paid">⑪</div>
+    <div class="scene-title">購入を促すリード文生成</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+
+有料noteの販売ページ用リード文を作成してください。
+
+・読者の悩み
+・解決できること
+・購入後の未来
+
+を含めてください。</pre>
+    </div>
+    <p class="tip-note">悩み→解決→未来の順で構成する</p>
+  </div>
+
+  <div class="paid-section">
+    <div class="scene-num paid">⑫</div>
+    <div class="scene-title">「売れる有料note」の構成案生成</div>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 プロンプト</div>
+      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+      <pre>テーマ：
+{{テーマ}}
+価格：
+{{価格}}
+
+有料note向け構成案を作成してください。
+
+・導入
+・ノウハウ
+・事例
+・応用編
+・まとめ</pre>
+    </div>
+    <p class="tip-note">無料部分と有料部分を分けて考える</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 比較 -->
+  <h2>ClaudeとChatGPTどちらがnoteに向いているか</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>比較項目</th><th>Claude</th><th>ChatGPT</th></tr></thead>
+      <tbody>
+        <tr><td>文体の自然さ</td><td>◎</td><td>○</td></tr>
+        <tr><td>長文対応</td><td>◎</td><td>○</td></tr>
+        <tr><td>感情表現</td><td>◎</td><td>○</td></tr>
+        <tr><td>考察記事</td><td>◎</td><td>○</td></tr>
+        <tr><td>有料コンテンツ向け</td><td>◎</td><td>○</td></tr>
+        <tr><td>SEO記事</td><td>○</td><td>◎</td></tr>
+        <tr><td>情報整理</td><td>○</td><td>◎</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>note・エッセイ・体験談 → <strong>Claude</strong></li>
+    <li>SEO記事・ビジネス記事 → <strong>ChatGPT</strong></li>
+    <li>長文執筆 → <strong>Claude</strong></li>
+    <li>情報整理 → <strong>ChatGPT</strong></li>
+  </ul>
+
+  <hr class="divider">
+
+  <!-- コツ -->
+  <h2>さらに質を上げる3つのコツ</h2>
+  <div class="tip-box">
+    <div class="tip-title">① 自分の実体験を1エピソード加える</div>
+    <p style="font-size:.88rem;color:#9090b0;margin:0">AIだけで作った記事は似た内容になりやすい。自分しか知らない失敗談や経験談を1つ追加するだけで独自性が生まれる。</p>
+  </div>
+  <div class="tip-box">
+    <div class="tip-title">② 書き出しにこだわる</div>
+    <p style="font-size:.88rem;color:#9090b0;margin:0">読者は最初の数行で読むかどうかを判断する。悩みへの共感や意外な事実から始めると最後まで読まれやすくなる。</p>
+  </div>
+  <div class="tip-box">
+    <div class="tip-title">③ タイトルは最後に決める</div>
+    <p style="font-size:.88rem;color:#9090b0;margin:0">最初にタイトルを固定すると内容が制限される。まず本文を書き切り、その後に最も内容を表現できるタイトルを付けるほうがクリック率も上がる。</p>
+  </div>
+
+  <!-- まとめ -->
+  <h2>まとめ</h2>
+  <div class="summary-box">
+    <div class="summary-title">この記事のまとめ</div>
+    <ul>
+      <li>基本3パターン＋ジャンル別6パターン＋有料note向け3パターンの計12プロンプトを収録</li>
+      <li>note・エッセイ・体験談は <strong>Claude</strong>、SEO・情報整理は <strong>ChatGPT</strong> が得意</li>
+      <li>AIの構成に自分の実体験を1エピソード加えると独自性が生まれる</li>
+    </ul>
+  </div>
+  <p>まずは今回紹介したテンプレートを使い、自分の発信ジャンルに合わせてカスタマイズしてみてください。</p>
+
+  <div class="cta-block">
+    <p>長文・自然な文体でnoteを書くならClaude Pro、SEO記事との並行運用にはChatGPT Proも検討を。</p>
+    <div class="btn-row">
+      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-primary">▶ Claude Proを試す</a>
+      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-secondary">▶ ChatGPT Proを試す</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 プロンプトラボ. All rights reserved.</p>
+</footer>
+
+<script>
+function copyPrompt(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'コピーしました！';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
