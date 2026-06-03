@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【2026年版】文章生成AIおすすめ5選を徹底比較 | プロンプトラボ</title>
+  <meta name="description" content="ChatGPT・Claude・Gemini・Perplexity・Copilotを価格・日本語品質・長文対応・特徴で徹底比較。用途別おすすめの選び方も解説。">
+  <meta property="og:title" content="【2026年版】文章生成AIおすすめ5選を徹底比較">
+  <meta property="og:type" content="article">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .breadcrumb a:hover { color: #a78bfa; }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.4rem 0 .5rem; }
+    p { margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    li { margin-bottom: .4rem; line-height: 1.7; }
+    strong { color: #e0e0f8; }
+    .point-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .point-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .point-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .point-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .point-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; white-space: nowrap; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(167,139,250,.04); }
+    .tool-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 14px; padding: 1.4rem 1.6rem; margin-bottom: 1.2rem; transition: border-color .2s; }
+    .tool-card:hover { border-color: #2e2e4e; }
+    .tool-card.featured { border: 2px solid rgba(167,139,250,.4); }
+    .tool-header { display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; }
+    .tool-icon { font-size: 1.6rem; }
+    .tool-name { font-size: 1.05rem; font-weight: 700; color: #f0f0fa; }
+    .tool-tag { font-size: .7rem; font-weight: 600; padding: .2rem .6rem; border-radius: 4px; margin-left: .4rem; }
+    .tag-rec { background: rgba(167,139,250,.15); color: #a78bfa; }
+    .tool-desc { font-size: .88rem; color: #9090b0; margin-bottom: 1rem; line-height: 1.6; }
+    .tool-good { font-size: .8rem; }
+    .tool-good .label { font-size: .72rem; font-weight: 700; color: #a78bfa; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .4rem; }
+    .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1rem 0; }
+    .use-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: .9rem 1rem; }
+    .use-purpose { font-size: .8rem; color: #70708c; margin-bottom: .2rem; }
+    .use-tool { font-size: .95rem; font-weight: 600; color: #e0e0f8; }
+    .use-reason { font-size: .78rem; color: #70708c; margin-top: .2rem; line-height: 1.5; }
+    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
+    .btn-secondary:hover { background: rgba(167,139,250,.1); }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
+  <div class="nav-links">
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="breadcrumb"><a href="/">トップ</a> › <a href="/">ツール比較</a> › 文章生成AIおすすめ5選</div>
+  <span class="article-label">ツール比較</span>
+  <h1>【2026年版】<br>文章生成AIおすすめ5選を徹底比較</h1>
+  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約7分</div>
+  <div class="lead">ChatGPT・Claude・Gemini…どれを使えばいいか迷っていませんか？<br><br>AIツールの種類が増えたことで「結局どれを選べばいいかわからない」という人が増えています。どのAIにも得意分野があり、目的によって最適なツールは異なります。<strong>2026年時点のおすすめ5選を価格・日本語品質・用途別</strong>で徹底比較します。</div>
+
+  <h2>文章生成AIを選ぶ3つのポイント</h2>
+  <div class="point-grid">
+    <div class="point-card"><div class="point-icon">🎯</div><div class="point-title">用途</div><div class="point-desc">ブログ記事を書きたいのか、ビジネス文書を作りたいのかによって適したAIは変わる。</div></div>
+    <div class="point-card"><div class="point-icon">💰</div><div class="point-title">価格</div><div class="point-desc">無料でも十分使えるツールはあるが、本格活用なら有料プランの機能差も要確認。</div></div>
+    <div class="point-card"><div class="point-icon">🇯🇵</div><div class="point-title">日本語対応</div><div class="point-desc">海外製AIでも日本語品質には差がある。自然な日本語で書きたい場合は重要な比較ポイント。</div></div>
+  </div>
+
+  <h2>おすすめ5選の比較表</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ツール</th><th>価格</th><th>無料枠</th><th>日本語品質</th><th>長文対応</th><th>特徴</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ChatGPT</strong></td><td>有料プランあり</td><td>あり</td><td>◎</td><td>◎</td><td>万能型・初心者にも使いやすい</td></tr>
+        <tr><td><strong>Claude</strong></td><td>有料プランあり</td><td>あり</td><td>◎</td><td>◎</td><td>長文生成・自然な文章が得意</td></tr>
+        <tr><td><strong>Gemini</strong></td><td>有料プランあり</td><td>あり</td><td>○</td><td>○</td><td>Googleサービスとの連携が強い</td></tr>
+        <tr><td><strong>Perplexity</strong></td><td>有料プランあり</td><td>あり</td><td>○</td><td>△</td><td>情報収集・検索に強い</td></tr>
+        <tr><td><strong>Copilot</strong></td><td>有料プランあり</td><td>あり</td><td>○</td><td>○</td><td>Microsoft製品との相性が良い</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+  <h2>各ツール詳細レビュー</h2>
+
+  <div class="tool-card featured">
+    <div class="tool-header">
+      <div class="tool-icon">🤖</div>
+      <div><span class="tool-name">ChatGPT</span><span class="tool-tag tag-rec">最おすすめ</span></div>
+    </div>
+    <p class="tool-desc">現在最も利用者が多い文章生成AIです。ビジネスメール・記事作成・要約・翻訳・SNS投稿など幅広い用途に対応でき、プロンプトの自由度も高く初心者から上級者まで使いやすい点が魅力です。</p>
+    <div class="tool-good">
+      <div class="label">得意なこと</div>
+      <ul><li>ビジネス文書・メール作成</li><li>ブログ記事・SNS投稿</li><li>要約・翻訳</li><li>画像生成（DALL-E連携）</li></ul>
+    </div>
+    <p style="font-size:.82rem;color:#70708c;margin-top:.6rem">👤 おすすめ: 仕事と副業の両方でAIを活用したい人</p>
+  </div>
+
+  <div class="tool-card featured">
+    <div class="tool-header">
+      <div class="tool-icon">⚡</div>
+      <div><span class="tool-name">Claude</span><span class="tool-tag tag-rec">長文・自然な文章</span></div>
+    </div>
+    <p class="tool-desc">自然な文章生成に優れたAIです。長文記事や体験談・note記事など、人間らしい文章を作ることを得意としています。構成作成から本文執筆まで一貫して行いやすい点も特徴です。</p>
+    <div class="tool-good">
+      <div class="label">得意なこと</div>
+      <ul><li>長文記事・note執筆</li><li>体験談・考察記事</li><li>議事録整理・要約</li><li>感情表現が必要な文章</li></ul>
+    </div>
+    <p style="font-size:.82rem;color:#70708c;margin-top:.6rem">👤 おすすめ: ブログ運営やコンテンツ制作を行う人</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">🔷</div>
+      <div><span class="tool-name">Gemini</span></div>
+    </div>
+    <p class="tool-desc">GoogleのAIです。Google Workspaceとの連携が強く、GmailやGoogleドキュメントとの組み合わせで活用しやすい特徴があります。</p>
+    <div class="tool-good">
+      <div class="label">得意なこと</div>
+      <ul><li>Google検索との連携</li><li>Gmail作成補助</li><li>Googleドキュメント作成</li></ul>
+    </div>
+    <p style="font-size:.82rem;color:#70708c;margin-top:.6rem">👤 おすすめ: Googleサービスを日常的に利用している人</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">🔍</div>
+      <div><span class="tool-name">Perplexity</span></div>
+    </div>
+    <p class="tool-desc">検索特化型AIです。情報収集やリサーチに強く、出典を確認しながら調査を進められます。記事執筆前の下調べとの相性が良好です。</p>
+    <div class="tool-good">
+      <div class="label">得意なこと</div>
+      <ul><li>リサーチ・情報収集</li><li>最新情報の確認</li><li>競合調査</li></ul>
+    </div>
+    <p style="font-size:.82rem;color:#70708c;margin-top:.6rem">👤 おすすめ: 調査業務やSEO記事を書く人</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">🪟</div>
+      <div><span class="tool-name">Copilot</span></div>
+    </div>
+    <p class="tool-desc">MicrosoftのAIです。Word・Excel・PowerPointとの連携が強く、業務効率化に向いています。</p>
+    <div class="tool-good">
+      <div class="label">得意なこと</div>
+      <ul><li>Word文書作成</li><li>Excel分析補助</li><li>PowerPoint資料作成</li></ul>
+    </div>
+    <p style="font-size:.82rem;color:#70708c;margin-top:.6rem">👤 おすすめ: Microsoft 365を利用している会社員</p>
+  </div>
+
+  <hr class="divider">
+  <h2>用途別おすすめの選び方</h2>
+  <div class="use-grid">
+    <div class="use-card"><div class="use-purpose">ビジネス文書</div><div class="use-tool">→ ChatGPT</div><div class="use-reason">メール・報告書・提案書を安定した品質で作成できる</div></div>
+    <div class="use-card"><div class="use-purpose">副業・ブログ</div><div class="use-tool">→ Claude</div><div class="use-reason">自然な長文コンテンツを作りやすく相性が非常に良い</div></div>
+    <div class="use-card"><div class="use-purpose">翻訳</div><div class="use-tool">→ ChatGPT</div><div class="use-reason">日英変換の精度が高くビジネスメールにも対応</div></div>
+    <div class="use-card"><div class="use-purpose">画像生成も使いたい</div><div class="use-tool">→ ChatGPT</div><div class="use-reason">DALL-E連携でSNS・コンテンツ制作を効率化できる</div></div>
+    <div class="use-card"><div class="use-purpose">無料で使いたい</div><div class="use-tool">→ Gemini / Perplexity</div><div class="use-reason">無料プランでも十分な機能を利用できる</div></div>
+    <div class="use-card"><div class="use-purpose">リサーチ・調査</div><div class="use-tool">→ Perplexity</div><div class="use-reason">出典付きで最新情報を収集できる</div></div>
+  </div>
+
+  <h2>まとめ</h2>
+  <div class="summary-box">
+    <div class="summary-title">この記事のまとめ</div>
+    <ul>
+      <li>万能型なら <strong>ChatGPT</strong>、長文執筆なら <strong>Claude</strong> がおすすめ</li>
+      <li>Google連携なら <strong>Gemini</strong>、リサーチなら <strong>Perplexity</strong>、Microsoft連携なら <strong>Copilot</strong></li>
+      <li>迷ったらまず <strong>ChatGPT か Claude</strong> から始めるのが最短ルート</li>
+    </ul>
+  </div>
+  <p>まずはChatGPTかClaudeの無料プランで使い比べ、自分の用途に合う方を見つけるのが最適な選び方です。</p>
+
+  <div class="cta-block">
+    <p>本格的に活用するなら有料プランで制限なく使えます。</p>
+    <div class="btn-row">
+      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-primary">▶ ChatGPT Proを試す</a>
+      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-secondary">▶ Claude Proを試す</a>
+    </div>
+  </div>
+</div>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
+</body>
+</html>
