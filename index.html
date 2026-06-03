@@ -45,6 +45,8 @@
     .nb-writer  { background: rgba(251,191,36,.15); color: #fbbf24; }
     .nb-note    { background: rgba(244,114,182,.15); color: #f472b6; }
     .nb-yt      { background: rgba(239,68,68,.15); color: #f87171; }
+    .nb-sns     { background: rgba(14,165,233,.15); color: #38bdf8; }
+    .nb-en      { background: rgba(168,85,247,.15); color: #c084fc; }
     .new-title { font-size: .95rem; font-weight: 600; color: #e8e8f0; margin-bottom: .2rem; line-height: 1.4; }
     .new-desc { font-size: .8rem; color: #70708c; line-height: 1.5; }
     .new-arrow { font-size: 1rem; color: #a78bfa; flex-shrink: 0; align-self: center; }
@@ -68,9 +70,9 @@
 <nav>
   <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="#shokushu">職種別</a>
-    <a href="#yoto">用途別</a>
-    <a href="#fukugyou">副業</a>
+    <a href="#categories">職種別</a>
+    <a href="#categories">用途別</a>
+    <a href="#categories">副業</a>
     <a href="#free-pdf">無料PDF</a>
   </div>
 </nav>
@@ -86,19 +88,58 @@
 </section>
 
 <div class="stats">
-  <div class="stat-item"><p class="stat-n">200+</p><p class="stat-l">公開プロンプト数</p></div>
-  <div class="stat-item"><p class="stat-n">6</p><p class="stat-l">公開記事数（随時追加）</p></div>
+  <div class="stat-item"><p class="stat-n">350+</p><p class="stat-l">公開プロンプト数</p></div>
+  <div class="stat-item"><p class="stat-n">10</p><p class="stat-l">公開記事数（随時追加）</p></div>
   <div class="stat-item"><p class="stat-n">無料</p><p class="stat-l">完全無料・登録不要</p></div>
 </div>
 
 <hr class="divider">
 
-<!-- NEW ARTICLES -->
 <section class="section" id="new-articles">
   <p class="section-label">New Articles</p>
   <h2>新着記事</h2>
   <p class="sub">コピペしてすぐ使えるプロンプト集を随時追加しています。</p>
   <div class="new-grid">
+
+    <a href="/perplexity-chatgpt-claude-guide.html" class="new-card">
+      <div class="new-icon">🗺️</div>
+      <div class="new-body">
+        <span class="new-badge nb-compare">ツール比較</span>
+        <div class="new-title">Perplexity・ChatGPT・Claudeの使い分け完全ガイド【2026年版】</div>
+        <div class="new-desc">「調べるならPerplexity・作業するならChatGPT・書くならClaude」シーン別8パターンを解説。</div>
+      </div>
+      <div class="new-arrow">›</div>
+    </a>
+
+    <a href="/ai-writing-tools-comparison.html" class="new-card">
+      <div class="new-icon">📊</div>
+      <div class="new-body">
+        <span class="new-badge nb-compare">ツール比較</span>
+        <div class="new-title">【2026年版】文章生成AIおすすめ5選を徹底比較</div>
+        <div class="new-desc">ChatGPT・Claude・Gemini・Perplexity・Copilotを価格・日本語品質・用途別で比較。</div>
+      </div>
+      <div class="new-arrow">›</div>
+    </a>
+
+    <a href="/english-email-prompts.html" class="new-card">
+      <div class="new-icon">🌐</div>
+      <div class="new-body">
+        <span class="new-badge nb-en">英語メール</span>
+        <div class="new-title">英語メールをChatGPTで自然に書くプロンプト15選【ビジネス対応】</div>
+        <div class="new-desc">初回挨拶・お詫び・フォローアップなど基本8種＋上級4種＋品質チェック3種を収録。</div>
+      </div>
+      <div class="new-arrow">›</div>
+    </a>
+
+    <a href="/sns-post-prompts.html" class="new-card">
+      <div class="new-icon">📱</div>
+      <div class="new-body">
+        <span class="new-badge nb-sns">SNS / コンテンツ</span>
+        <div class="new-title">SNS投稿文をAIで量産するプロンプト【X・Instagram対応】</div>
+        <div class="new-desc">X向け6個・Instagram向け4個・補助3個の計13プロンプトで投稿ストックを量産。</div>
+      </div>
+      <div class="new-arrow">›</div>
+    </a>
 
     <a href="/youtube-script-prompts.html" class="new-card">
       <div class="new-icon">🎬</div>
@@ -165,47 +206,58 @@
 
 <hr class="divider">
 
-<!-- CATEGORIES -->
-<section class="section" id="shokushu">
+<section class="section" id="categories">
   <p class="section-label">Categories</p>
   <h2>職種・用途から探す</h2>
-  <p class="sub" id="yoto">あなたの仕事に合ったプロンプトをすぐに見つけられます。</p>
+  <p class="sub">あなたの仕事に合ったプロンプトをすぐに見つけられます。</p>
   <div class="card-grid">
     <a href="/business-email-prompts.html" class="card">
-      <div class="card-icon">📊</div>
-      <p class="card-title">営業・セールス</p>
-      <p class="card-desc">提案書・商談トーク・メール返信・顧客フォロー</p>
-      <p class="card-count">20+ プロンプト公開中</p>
+      <div class="card-icon">📧</div>
+      <p class="card-title">ビジネスメール</p>
+      <p class="card-desc">社外・社内の定型メールを10秒で作成</p>
+      <p class="card-count">20 プロンプト公開中</p>
     </a>
-    <a href="/ai-writer-prompts.html" class="card" id="fukugyou">
+    <a href="/meeting-minutes-prompts.html" class="card">
+      <div class="card-icon">🗂️</div>
+      <p class="card-title">議事録・業務効率化</p>
+      <p class="card-desc">議事録要約・報告書・資料整理</p>
+      <p class="card-count">9 プロンプト公開中</p>
+    </a>
+    <a href="/english-email-prompts.html" class="card">
+      <div class="card-icon">🌐</div>
+      <p class="card-title">英語メール</p>
+      <p class="card-desc">自然なビジネス英語を即生成</p>
+      <p class="card-count">15 プロンプト公開中</p>
+    </a>
+    <a href="/ai-writer-prompts.html" class="card">
       <div class="card-icon">✍️</div>
       <p class="card-title">ライター・副業</p>
-      <p class="card-desc">記事構成・見出し生成・SEO文章・note記事</p>
-      <p class="card-count">30+ プロンプト公開中</p>
-    </a>
-    <a href="/youtube-script-prompts.html" class="card">
-      <div class="card-icon">🎬</div>
-      <p class="card-title">YouTube・動画制作</p>
-      <p class="card-desc">台本構成・フック・タイトル・サムネ文言</p>
-      <p class="card-count">13 プロンプト公開中</p>
+      <p class="card-desc">記事構成・執筆・クライアント対応</p>
+      <p class="card-count">30 プロンプト公開中</p>
     </a>
     <a href="/note-claude-prompts.html" class="card">
       <div class="card-icon">📓</div>
       <p class="card-title">note・ブログ</p>
-      <p class="card-desc">記事構成・有料note・体験談・考察記事</p>
+      <p class="card-desc">記事構成・有料note・体験談・考察</p>
       <p class="card-count">12 プロンプト公開中</p>
     </a>
-    <a href="/meeting-minutes-prompts.html" class="card">
-      <div class="card-icon">🗂️</div>
-      <p class="card-title">業務効率化</p>
-      <p class="card-desc">議事録要約・メール作成・資料整理・報告書</p>
-      <p class="card-count">9 プロンプト公開中</p>
+    <a href="/youtube-script-prompts.html" class="card">
+      <div class="card-icon">🎬</div>
+      <p class="card-title">YouTube・動画制作</p>
+      <p class="card-desc">台本構成・フック・タイトル・サムネ</p>
+      <p class="card-count">13 プロンプト公開中</p>
+    </a>
+    <a href="/sns-post-prompts.html" class="card">
+      <div class="card-icon">📱</div>
+      <p class="card-title">SNS投稿</p>
+      <p class="card-desc">X・Instagram投稿文を量産</p>
+      <p class="card-count">13 プロンプト公開中</p>
     </a>
     <a href="/chatgpt-vs-claude.html" class="card">
       <div class="card-icon">🔍</div>
-      <p class="card-title">ツール比較</p>
-      <p class="card-desc">ChatGPT・Claude・Perplexityの使い分けガイド</p>
-      <p class="card-count">比較記事 公開中</p>
+      <p class="card-title">ツール比較・選び方</p>
+      <p class="card-desc">ChatGPT・Claude・Perplexityの使い分け</p>
+      <p class="card-count">比較記事 3本公開中</p>
     </a>
   </div>
 </section>
