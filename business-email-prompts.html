@@ -4,576 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ビジネスメールを10秒で書くChatGPTプロンプト20選【コピペOK】| プロンプトラボ</title>
-  <meta name="description" content="取引先への挨拶・お詫び・日程調整など社外10種＋社内10種のビジネスメール用ChatGPTプロンプトを完全無料公開。コピペしてすぐ使えます。">
+  <meta name="description" content="社外10種・社内10種のビジネスメール用ChatGPTプロンプト20選を無料公開。コピペしてすぐ使えます。">
   <meta property="og:title" content="ビジネスメールを10秒で書くChatGPTプロンプト20選【コピペOK】">
   <meta property="og:type" content="article">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
-      background: #0f0f13;
-      color: #e8e8f0;
-      line-height: 1.8;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-      border-bottom: 1px solid #1e1e2e;
-      position: sticky; top: 0;
-      background: rgba(15,15,19,.94);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
     .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
-    .article-label {
-      display: inline-block;
-      font-size: .72rem; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: #a78bfa;
-      background: rgba(167,139,250,.12);
-      border: 1px solid rgba(167,139,250,.25);
-      padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 800; line-height: 1.3;
-      letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa;
-    }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
     .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
-    .lead {
-      font-size: 1rem; color: #b0b0d0; line-height: 1.9;
-      margin-bottom: 2rem; padding: 1.2rem 1.4rem;
-      background: #16161e;
-      border-left: 3px solid #a78bfa;
-      border-radius: 0 8px 8px 0;
-    }
-    h2 {
-      font-size: 1.2rem; font-weight: 700; color: #f0f0fa;
-      margin: 2.5rem 0 1rem; padding-bottom: .5rem;
-      border-bottom: 1px solid #1e1e2e;
-    }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
     h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.8rem 0 .6rem; }
     p { margin-bottom: 1rem; color: #c0c0d8; }
     ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
-    .prompt-box {
-      background: #16161e;
-      border: 1px solid #2e2e3e;
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      margin: .8rem 0 .6rem;
-      position: relative;
-    }
-    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
-    pre {
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: .82rem; color: #d0d0f0;
-      white-space: pre-wrap; word-break: break-all;
-      line-height: 1.6; margin: 0;
-    }
-    .copy-btn {
-      position: absolute; top: .7rem; right: .7rem;
-      font-size: .72rem; padding: .3rem .7rem;
-      background: rgba(167,139,250,.15);
-      border: 1px solid rgba(167,139,250,.3);
-      border-radius: 6px; color: #a78bfa;
-      cursor: pointer; transition: background .2s;
-    }
-    .copy-btn:hover { background: rgba(167,139,250,.28); }
-    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
-    .usage-note { font-size: .82rem; color: #70708c; margin: .3rem 0 1.4rem; font-style: italic; }
-    .scene-card {
-      background: #16161e;
-      border: 1px solid #1e1e2e;
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      margin-bottom: 1.2rem;
-      transition: border-color .2s;
-    }
-    .scene-card:hover { border-color: #2e2e4e; }
-    .scene-num {
-      display: inline-block;
-      font-size: .72rem; font-weight: 700;
-      background: rgba(167,139,250,.15);
-      color: #a78bfa; border-radius: 4px;
-      padding: .15rem .5rem; margin-bottom: .5rem;
-    }
+    strong { color: #e0e0f8; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
     .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
-    .tip-box {
-      background: #16161e;
-      border: 1px solid #2e2e42;
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      margin: 1rem 0 1.4rem;
-    }
-    .tip-title { font-size: .78rem; font-weight: 700; color: #a78bfa; margin-bottom: .4rem; letter-spacing: .04em; }
-    .cta-block {
-      background: linear-gradient(135deg, #1a1025 0%, #16161e 100%);
-      border: 1px solid rgba(167,139,250,.3);
-      border-radius: 14px;
-      padding: 1.6rem 1.8rem;
-      margin: 2.5rem 0;
-      text-align: center;
-    }
-    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
-    .btn-cta {
-      display: inline-block;
-      padding: .7rem 1.8rem;
-      background: #7c3aed; color: #fff;
-      font-size: .9rem; font-weight: 600;
-      border-radius: 8px; text-decoration: none;
-      transition: background .2s, transform .15s;
-    }
-    .btn-cta:hover { background: #6d28d9; transform: translateY(-1px); }
-    .summary-box {
-      background: #16161e;
-      border: 1px solid #2e2e42;
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      margin: 1.5rem 0;
-    }
-    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
     .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
     footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
-  </style>
+</style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="/">職種別</a>
-    <a href="/">用途別</a>
-    <a href="/">副業</a>
-    <a href="/">無料PDF</a>
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
   </div>
 </nav>
-
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">トップ</a> &rsaquo; <a href="/">ビジネスメール</a> &rsaquo; ChatGPTプロンプト20選
-  </div>
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">ビジネスメール</a> › ChatGPTプロンプト20選</div>
+<span class="article-label">ビジネスメール</span>
+<h1>ビジネスメールを10秒で書く<br>ChatGPTプロンプト20選【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約7分</div>
+<div class="lead">メール1本書くのに10分かかっていませんか？<br><br>
+適切なプロンプトを使えば、メールのたたき台を<strong>数秒で作成</strong>できます。社外10種・社内10種のプロンプトをすべてコピペ可能な形で公開します。</div>
 
-  <span class="article-label">ビジネスメール</span>
-  <h1>ビジネスメールを10秒で書く<br>ChatGPTプロンプト20選【コピペOK】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約7分</div>
+<h2>このプロンプト集の使い方</h2>
+<p><code style="background:#1e1e2e;padding:.1rem .4rem;border-radius:4px;font-size:.85rem;color:#a78bfa">{{変数名}}</code> で囲まれた部分を自分の状況に合わせて書き換えてからChatGPTに送信するだけです。</p>
 
-  <div class="lead">
-    メール1本書くのに10分かかっていませんか？<br><br>
-    取引先への連絡や社内報告など、ビジネスメールは毎日のように発生します。「言い回しに悩む」「失礼がないか不安」「何度も書き直してしまう」という人も少なくありません。<br><br>
-    適切なプロンプトを使えば、メールのたたき台を<strong>数秒で作成</strong>できます。社外10種・社内10種のプロンプトをすべてコピペ可能な形で公開します。
-  </div>
-
-  <h2>このプロンプト集の使い方</h2>
-  <p>各プロンプトには <code style="background:#1e1e2e;padding:.1rem .4rem;border-radius:4px;font-size:.85rem;color:#a78bfa">{{変数名}}</code> で囲まれた部分があります。そこを自分の状況に合わせて書き換えてからChatGPTに送信するだけで、状況に合ったビジネスメールを自動生成できます。</p>
-
-  <!-- 社外メール -->
-  <h2>社外メール用プロンプト（10個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">01</div>
-    <div class="scene-title">初めての取引先への挨拶メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で初回挨拶メールを作成してください。
+<h2>社外メール用プロンプト（10個）</h2>
+<div class="scene-card">
+<div class="scene-num">01</div><div class="scene-title">初めての取引先への挨拶メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の条件で初回挨拶メールを作成してください。
 
 会社名：{{会社名}}
 担当者名：{{担当者名}}
 自社名：{{自社名}}
 目的：{{目的}}
 
-丁寧で信頼感のあるビジネスメールにしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：新規取引開始時のご挨拶</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">02</div>
-    <div class="scene-title">納期遅延のお詫びメール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容でお詫びメールを作成してください。
+丁寧で信頼感のあるビジネスメールにしてください。</pre></div>
+<p class="tip-note">新規取引開始時のご挨拶</p></div>
+<div class="scene-card">
+<div class="scene-num">02</div><div class="scene-title">納期遅延のお詫びメール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容でお詫びメールを作成してください。
 
 案件名：{{案件名}}
 当初納期：{{当初納期}}
 変更後納期：{{変更後納期}}
 遅延理由：{{理由}}
 
-誠意が伝わる文面にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：システム障害による納品遅延</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">03</div>
-    <div class="scene-title">見積もり依頼メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で見積もり依頼メールを作成してください。
+誠意が伝わる文面にしてください。</pre></div>
+<p class="tip-note">システム障害による納品遅延</p></div>
+<div class="scene-card">
+<div class="scene-num">03</div><div class="scene-title">見積もり依頼メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容で見積もり依頼メールを作成してください。
 
 依頼内容：{{内容}}
 希望納期：{{納期}}
 予算感：{{予算}}
 
-丁寧な依頼文にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：制作会社への発注相談</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">04</div>
-    <div class="scene-title">打ち合わせ日程調整メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で日程調整メールを作成してください。
+丁寧な依頼文にしてください。</pre></div>
+<p class="tip-note">制作会社への発注相談</p></div>
+<div class="scene-card">
+<div class="scene-num">04</div><div class="scene-title">打ち合わせ日程調整メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の条件で日程調整メールを作成してください。
 
 目的：{{打ち合わせ内容}}
 候補日：
 {{候補日一覧}}
 
-ビジネスマナーに沿って作成してください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：初回商談の日程調整</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">05</div>
-    <div class="scene-title">資料送付の案内メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で資料送付メールを作成してください。
+ビジネスマナーに沿って作成してください。</pre></div>
+<p class="tip-note">初回商談の日程調整</p></div>
+<div class="scene-card">
+<div class="scene-num">05</div><div class="scene-title">資料送付の案内メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の条件で資料送付メールを作成してください。
 
 資料名：{{資料名}}
 送付目的：{{目的}}
 
-簡潔で分かりやすい文章にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：提案資料の送付</p>
-  </div>
+簡潔で分かりやすい文章にしてください。</pre></div>
+<p class="tip-note">提案資料の送付</p></div>
 
-  <div class="scene-card">
-    <div class="scene-num">06</div>
-    <div class="scene-title">クレーム対応メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容でクレーム対応メールを作成してください。
-
-発生内容：{{内容}}
-原因：{{原因}}
-対応策：{{対応策}}
-
-謝罪と再発防止策を含めてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：サービス不具合への対応</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">07</div>
-    <div class="scene-title">契約更新のお知らせメール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で契約更新案内メールを作成してください。
-
-契約名：{{契約名}}
-更新日：{{更新日}}
-更新条件：{{条件}}
-
-丁寧な案内文にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：年間契約の更新通知</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">08</div>
-    <div class="scene-title">担当者変更のご連絡メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で担当変更メールを作成してください。
-
-旧担当者：{{旧担当}}
-新担当者：{{新担当}}
-変更日：{{変更日}}
-
-円滑な引継ぎを意識してください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：部署異動による担当変更</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">09</div>
-    <div class="scene-title">年末年始の挨拶メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で年末年始の挨拶メールを作成してください。
-
-会社名：{{会社名}}
-休業期間：{{期間}}
-
-フォーマルな文章にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：取引先への一斉送信</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">10</div>
-    <div class="scene-title">お礼メール（商談後）</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で商談後のお礼メールを作成してください。
-
-商談内容：{{内容}}
-今後の予定：{{予定}}
-
-好印象を与える文章にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：営業訪問後のお礼</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 社内メール -->
-  <h2>社内メール用プロンプト（10個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">11</div>
-    <div class="scene-title">会議招集メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で会議招集メールを作成してください。
+<hr class="divider">
+<h2>社内メール用プロンプト（10個）</h2>
+<div class="scene-card">
+<div class="scene-num">06</div><div class="scene-title">会議招集メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容で会議招集メールを作成してください。
 
 会議名：{{会議名}}
 日時：{{日時}}
-議題：{{議題}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：定例会議の案内</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">12</div>
-    <div class="scene-title">議事録の共有メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の会議内容を共有するメールを作成してください。
+議題：{{議題}}</pre></div>
+<p class="tip-note">定例会議の案内</p></div>
+<div class="scene-card">
+<div class="scene-num">07</div><div class="scene-title">議事録の共有メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の会議内容を共有するメールを作成してください。
 
 会議名：{{会議名}}
 決定事項：{{決定事項}}
-アクション：{{アクション}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：会議終了後の共有</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">13</div>
-    <div class="scene-title">業務報告メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で業務報告メールを作成してください。
+アクション：{{アクション}}</pre></div>
+<p class="tip-note">会議終了後の共有</p></div>
+<div class="scene-card">
+<div class="scene-num">08</div><div class="scene-title">業務報告メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容で業務報告メールを作成してください。
 
 本日の成果：{{成果}}
 課題：{{課題}}
-明日の予定：{{予定}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：日報作成</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">14</div>
-    <div class="scene-title">休暇申請メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で休暇申請メールを作成してください。
+明日の予定：{{予定}}</pre></div>
+<p class="tip-note">日報作成</p></div>
+<div class="scene-card">
+<div class="scene-num">09</div><div class="scene-title">休暇申請メール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の条件で休暇申請メールを作成してください。
 
 休暇日：{{日付}}
 理由：{{理由}}
-引継ぎ内容：{{内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：有給休暇申請</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">15</div>
-    <div class="scene-title">経費精算の依頼メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で経費精算依頼メールを作成してください。
-
-用途：{{用途}}
-金額：{{金額}}
-申請日：{{日付}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：出張費精算</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">16</div>
-    <div class="scene-title">進捗報告メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で進捗報告メールを作成してください。
-
-案件名：{{案件名}}
-進捗率：{{進捗}}
-課題：{{課題}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：プロジェクト管理</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">17</div>
-    <div class="scene-title">部署異動の挨拶メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件で異動挨拶メールを作成してください。
-
-異動前部署：{{部署}}
-異動後部署：{{部署}}
-着任日：{{日付}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：社内周知</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">18</div>
-    <div class="scene-title">歓迎会の案内メール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で歓迎会案内メールを作成してください。
-
-対象者：{{氏名}}
-日時：{{日時}}
-場所：{{場所}}</pre>
-    </div>
-    <p class="usage-note">💡 使用例：新入社員歓迎会</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">19</div>
-    <div class="scene-title">締め切りリマインドメール</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の条件でリマインドメールを作成してください。
+引継ぎ内容：{{内容}}</pre></div>
+<p class="tip-note">有給休暇申請</p></div>
+<div class="scene-card">
+<div class="scene-num">10</div><div class="scene-title">締め切りリマインドメール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の条件でリマインドメールを作成してください。
 
 案件名：{{案件}}
 締切日：{{締切}}
 依頼事項：{{内容}}
 
-催促になりすぎない表現にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：提出期限の案内</p>
-  </div>
+催促になりすぎない表現にしてください。</pre></div>
+<p class="tip-note">提出期限の案内</p></div>
 
-  <div class="scene-card">
-    <div class="scene-num">20</div>
-    <div class="scene-title">お礼メール（社内）</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の内容で社内向けお礼メールを作成してください。
-
-お礼内容：{{内容}}
-成果：{{成果}}
-
-感謝が伝わる文章にしてください。</pre>
-    </div>
-    <p class="usage-note">💡 使用例：プロジェクト完了後</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- コツ -->
-  <h2>ChatGPTでメールの質をさらに上げる3つのコツ</h2>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ① トーンを指定する</div>
-    <p style="margin-bottom:.5rem">同じ内容でも印象は大きく変わります。プロンプトの末尾に以下のような指定を加えると精度が向上します。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>丁寧に / フォーマルに / 柔らかく / 誠意を重視して / 親しみやすく</pre>
-    </div>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ② 文字数を指定する</div>
-    <p style="margin-bottom:.5rem">「300文字以内」「簡潔に」「3段落で」など具体的に指定すると読みやすいメールになります。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>300文字以内で作成してください。</pre>
-    </div>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ③ 修正指示を出す</div>
-    <p style="margin-bottom:.5rem">一度生成したメールは追加指示で改善できます。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>もっと丁寧にしてください。
-謝罪の表現を強めてください。
-上司向けの文体にしてください。</pre>
-    </div>
-  </div>
-
-  <!-- まとめ -->
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>社外メール10種・社内メール10種のプロンプトをコピペして使える</li>
-      <li><code style="background:#0f0f13;padding:.1rem .4rem;border-radius:4px;font-size:.85rem;color:#a78bfa">{{変数名}}</code> を書き換えるだけで即使用可能</li>
-      <li>トーン指定・文字数指定・修正指示で精度をさらに上げられる</li>
-    </ul>
-  </div>
-  <p>今回紹介した20個のプロンプトは、ビジネスメールのほとんどの場面をカバーしています。まずはそのままコピペして使い、自分の業務に合わせて調整してみてください。</p>
-
-  <div class="cta-block">
-    <p>さらに高精度なメール作成・長文対応・複雑な指示にはChatGPT Proがおすすめです。</p>
-    <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-cta">▶ ChatGPT Proを試す</a>
-  </div>
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>社外メール10種・社内メール10種のプロンプトをコピペして使える</li>
+<li>{{変数名}} を書き換えるだけで即使用可能</li>
+<li>トーン指定・文字数指定・修正指示で精度をさらに上げられる</li>
+</ul></div>
+<div class="cta-block"><p>さらに高精度なメール作成・文章品質向上には以下がおすすめです。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+APTO2+3Q2O+HVFKY" class="btn-secondary" rel="nofollow">▶ 文章作成アドバイスツール【文賢】</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B5MC5+APTO2+3Q2O+HVFKY" alt="">
+</div></div>
 </div>
-
-<footer>
-  <p>© 2026 プロンプトラボ. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
 
 <script>
 function copyPrompt(btn) {
-  const pre = btn.parentElement.querySelector('pre');
-  navigator.clipboard.writeText(pre.innerText).then(() => {
-    btn.textContent = 'コピーしました！';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'コピー';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
 }
 </script>
+
 </body>
 </html>

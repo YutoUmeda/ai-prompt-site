@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YouTube台本をAIで作るプロンプト集【ChatGPT・Claude対応】| プロンプトラボ</title>
-  <meta name="description" content="解説・Vlog・ランキングなど基本3パターン＋ジャンル別6パターン＋補助4パターンのYouTube台本作成プロンプトを無料公開。コピペしてすぐ使えます。">
+  <meta name="description" content="解説・Vlog・ランキングなど基本3パターン＋ジャンル別6パターン＋補助2パターンのYouTube台本作成プロンプトを無料公開。">
   <meta property="og:title" content="YouTube台本をAIで作るプロンプト集【ChatGPT・Claude対応】">
   <meta property="og:type" content="article">
   <style>
@@ -13,119 +13,71 @@
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
     .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
     .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
     h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
     .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
     .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
     h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.8rem 0 .6rem; }
     p { margin-bottom: 1rem; color: #c0c0d8; }
     ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
     strong { color: #e0e0f8; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
     .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
     .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
     .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
     .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
     .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
-    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; transition: border-color .2s; }
-    .scene-card:hover { border-color: #2e2e4e; }
-    .scene-card.sub { background: #13131a; border-color: #252535; }
-    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
-    .scene-num.sub { background: rgba(52,211,153,.15); color: #34d399; }
-    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
-    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
-    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
-    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
-    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; transition: background .2s; }
-    .copy-btn:hover { background: rgba(167,139,250,.28); }
-    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
-    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
-    .tip-note::before { content: "💡 "; }
-    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
-    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
-    th { background: #1e1e2e; color: #a78bfa; padding: .6rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
-    td { padding: .6rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; text-align: center; }
-    td:first-child { text-align: left; }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(167,139,250,.04); }
-    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
-    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
-    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
-    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
-    .btn-secondary:hover { background: rgba(167,139,250,.1); }
-    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
-    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
     footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
-  </style>
+</style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="/">職種別</a>
-    <a href="/">用途別</a>
-    <a href="/">副業</a>
-    <a href="/">無料PDF</a>
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
   </div>
 </nav>
-
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">トップ</a> &rsaquo; <a href="/">用途別</a> &rsaquo; YouTube台本AI作成
-  </div>
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">用途別</a> › YouTube台本AI作成</div>
+<span class="article-label">YouTube / 動画制作</span>
+<h1>YouTube台本をAIで作る<br>プロンプト集【ChatGPT・Claude対応】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">台本を考えるのが面倒で、YouTube投稿が続かなくなっていませんか？<br><br>
+適切なプロンプトを使えば、動画の構成からセリフ、タイトル案まで短時間で作成できます。<strong>基本3パターン＋ジャンル別6パターン＋補助2パターン</strong>の計11プロンプトを公開します。</div>
 
-  <span class="article-label">YouTube / 動画制作</span>
-  <h1>YouTube台本をAIで作る<br>プロンプト集【ChatGPT・Claude対応】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
-
-  <div class="lead">
-    台本を考えるのが面倒で、YouTube投稿が続かなくなっていませんか？<br><br>
-    YouTube運営で最も時間がかかる作業のひとつが台本作成です。ネタはあるのに構成が決まらない、話の流れがまとまらない——そんな悩みはChatGPTやClaudeで解決できます。<br><br>
-    動画の構成からセリフ、タイトル案まで短時間で作れる<strong>プロンプト13個</strong>をすべてコピペ可能な形で公開します。
-  </div>
-
-  <!-- メリット -->
-  <h2>AI台本作成のメリット3つ</h2>
-  <div class="merit-grid">
-    <div class="merit-card">
-      <div class="merit-icon">🧭</div>
-      <div class="merit-title">構成の迷いがなくなる</div>
-      <div class="merit-desc">動画テーマを入力するだけで全体の流れを整理できる。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">🎬</div>
-      <div class="merit-title">撮影時間が短縮</div>
-      <div class="merit-desc">事前に話す内容が整理されるため、撮り直しが減る。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">🔁</div>
-      <div class="merit-title">再現性が上がる</div>
-      <div class="merit-desc">毎回同じ品質で動画構成を作れるため、継続投稿しやすくなる。</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 基本3パターン -->
-  <h2>台本の基本構成プロンプト（3パターン）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">①</div>
-    <div class="scene-title">情報系・解説動画向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+<h2>台本の基本構成プロンプト（3パターン）</h2>
+<div class="scene-card"><div class="scene-num">①</div><div class="scene-title">情報系・解説動画向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 YouTube解説動画の台本構成を作成してください。
@@ -137,18 +89,9 @@ YouTube解説動画の台本構成を作成してください。
 ・具体例
 ・まとめ
 
-視聴維持率を意識してください。</pre>
-    </div>
-    <p class="tip-note">初心者向けと指定すると理解しやすくなる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">②</div>
-    <div class="scene-title">Vlog・体験談動画向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+視聴維持率を意識してください。</pre></div><p class="tip-note">初心者向けと指定すると理解しやすくなる</p></div>
+<div class="scene-card"><div class="scene-num">②</div><div class="scene-title">Vlog・体験談動画向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 体験談動画の台本構成を作成してください。
@@ -159,18 +102,9 @@ YouTube解説動画の台本構成を作成してください。
 ・結果
 ・学び
 
-ストーリー性を重視してください。</pre>
-    </div>
-    <p class="tip-note">感情の変化を入れると見られやすい</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">③</div>
-    <div class="scene-title">ランキング・まとめ動画向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+ストーリー性を重視してください。</pre></div><p class="tip-note">感情の変化を入れると見られやすい</p></div>
+<div class="scene-card"><div class="scene-num">③</div><div class="scene-title">ランキング・まとめ動画向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 ランキング動画の台本を作成してください。
@@ -179,23 +113,12 @@ YouTube解説動画の台本構成を作成してください。
 ・第5位〜第1位
 ・まとめ
 
-テンポ良く進行してください。</pre>
-    </div>
-    <p class="tip-note">順位ごとに理由も付ける</p>
-  </div>
+テンポ良く進行してください。</pre></div><p class="tip-note">順位ごとに理由も付ける</p></div>
 
-  <hr class="divider">
 
-  <!-- ジャンル別 -->
-  <h2>ジャンル別プロンプト（6パターン）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">④</div>
-    <div class="scene-title">ビジネス・副業系チャンネル</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+<h2>ジャンル別プロンプト（6パターン）</h2>
+<div class="scene-card"><div class="scene-num">④</div><div class="scene-title">ビジネス・副業系チャンネル</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 副業・ビジネス系YouTube台本を作成してください。
@@ -204,18 +127,9 @@ YouTube解説動画の台本構成を作成してください。
 ・解決策
 ・実践方法
 ・成功例
-・まとめ</pre>
-    </div>
-    <p class="tip-note">数字や実績を入れると説得力が増す</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑤</div>
-    <div class="scene-title">ガジェット・レビュー系チャンネル</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>商品名：
+・まとめ</pre></div><p class="tip-note">数字や実績を入れると説得力が増す</p></div>
+<div class="scene-card"><div class="scene-num">⑤</div><div class="scene-title">ガジェット・レビュー系チャンネル</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>商品名：
 {{商品名}}
 
 レビュー動画台本を作成してください。
@@ -224,18 +138,9 @@ YouTube解説動画の台本構成を作成してください。
 ・メリット
 ・デメリット
 ・おすすめする人
-・総評</pre>
-    </div>
-    <p class="tip-note">購入判断材料を意識する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑥</div>
-    <div class="scene-title">料理・ライフスタイル系チャンネル</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+・総評</pre></div><p class="tip-note">購入判断材料を意識する</p></div>
+<div class="scene-card"><div class="scene-num">⑥</div><div class="scene-title">料理・ライフスタイル系チャンネル</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 ライフスタイル動画の台本を作成してください。
@@ -244,18 +149,9 @@ YouTube解説動画の台本構成を作成してください。
 ・手順
 ・ポイント
 ・完成
-・まとめ</pre>
-    </div>
-    <p class="tip-note">視覚的な見せ場も盛り込む</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑦</div>
-    <div class="scene-title">学習・教育系チャンネル</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+・まとめ</pre></div><p class="tip-note">視覚的な見せ場も盛り込む</p></div>
+<div class="scene-card"><div class="scene-num">⑦</div><div class="scene-title">学習・教育系チャンネル</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 教育系動画の台本を作成してください。
@@ -265,18 +161,9 @@ YouTube解説動画の台本構成を作成してください。
 ・具体例
 ・復習
 
-初心者向けに説明してください。</pre>
-    </div>
-    <p class="tip-note">難しい言葉を避ける</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑧</div>
-    <div class="scene-title">エンタメ・トーク系チャンネル</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+初心者向けに説明してください。</pre></div><p class="tip-note">難しい言葉を避ける</p></div>
+<div class="scene-card"><div class="scene-num">⑧</div><div class="scene-title">エンタメ・トーク系チャンネル</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 トーク動画の台本を作成してください。
@@ -286,18 +173,9 @@ YouTube解説動画の台本構成を作成してください。
 ・エピソード
 ・オチ
 
-テンポ重視でお願いします。</pre>
-    </div>
-    <p class="tip-note">共感ポイントを多く入れる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑨</div>
-    <div class="scene-title">ショート動画（60秒以内）向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+テンポ重視でお願いします。</pre></div><p class="tip-note">共感ポイントを多く入れる</p></div>
+<div class="scene-card"><div class="scene-num">⑨</div><div class="scene-title">ショート動画（60秒以内）向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 60秒以内のショート動画台本を作成してください。
@@ -306,65 +184,17 @@ YouTube解説動画の台本構成を作成してください。
 ・本題
 ・締め
 
-簡潔にしてください。</pre>
-    </div>
-    <p class="tip-note">最初の一文に全力を注ぐ</p>
-  </div>
+簡潔にしてください。</pre></div><p class="tip-note">最初の一文に全力を注ぐ</p></div>
 
-  <hr class="divider">
 
-  <!-- 補助プロンプト -->
-  <h2>台本の質を上げる補助プロンプト（4個）</h2>
-
-  <div class="scene-card sub">
-    <div class="scene-num sub">⑩</div>
-    <div class="scene-title">冒頭フック（最初の15秒）を3パターン生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>動画テーマ：
+<h2>台本の質を上げる補助プロンプト（2個）</h2>
+<div class="scene-card"><div class="scene-num">⑩</div><div class="scene-title">冒頭フック（最初の15秒）を3パターン生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>動画テーマ：
 {{テーマ}}
 
-最初の15秒で視聴者を引き込むフックを3パターン作成してください。</pre>
-    </div>
-    <p class="tip-note">驚き・損失回避・好奇心を使う</p>
-  </div>
-
-  <div class="scene-card sub">
-    <div class="scene-num sub">⑪</div>
-    <div class="scene-title">視聴者を引き止めるセリフを追加</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の台本に
-離脱防止のセリフを追加してください。
-
-{{台本}}</pre>
-    </div>
-    <p class="tip-note">「後半で重要な話をします」が有効</p>
-  </div>
-
-  <div class="scene-card sub">
-    <div class="scene-num sub">⑫</div>
-    <div class="scene-title">エンディング・チャンネル登録促進の文言を生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>チャンネルテーマ：
-{{テーマ}}
-
-自然な登録促進コメントを5案作成してください。</pre>
-    </div>
-    <p class="tip-note">押し売り感を出さない</p>
-  </div>
-
-  <div class="scene-card sub">
-    <div class="scene-num sub">⑬</div>
-    <div class="scene-title">タイトル・サムネイル文言を10案生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>動画テーマ：
+最初の15秒で視聴者を引き込むフックを3パターン作成してください。</pre></div><p class="tip-note">驚き・損失回避・好奇心を使う</p></div>
+<div class="scene-card"><div class="scene-num">⑪</div><div class="scene-title">タイトル・サムネイル文言を10案生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>動画テーマ：
 {{テーマ}}
 
 クリック率を意識して
@@ -372,70 +202,44 @@ YouTube解説動画の台本構成を作成してください。
 ・タイトル10案
 ・サムネ文言10案
 
-を作成してください。</pre>
-    </div>
-    <p class="tip-note">数字とベネフィットを含める</p>
-  </div>
+を作成してください。</pre></div><p class="tip-note">数字とベネフィットを含める</p></div>
 
-  <hr class="divider">
 
-  <!-- 比較 -->
-  <h2>ChatGPTとClaudeどちらが台本作成に向いているか</h2>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>比較項目</th><th>ChatGPT</th><th>Claude</th></tr></thead>
-      <tbody>
-        <tr><td>構成力</td><td>◎</td><td>○</td></tr>
-        <tr><td>自然な文章</td><td>○</td><td>◎</td></tr>
-        <tr><td>長尺動画対応</td><td>○</td><td>◎</td></tr>
-        <tr><td>エンタメ性</td><td>◎</td><td>○</td></tr>
-        <tr><td>ショート動画</td><td>◎</td><td>○</td></tr>
-        <tr><td>情報整理</td><td>◎</td><td>○</td></tr>
-        <tr><td>ストーリー性</td><td>○</td><td>◎</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <ul>
-    <li>解説動画・教育動画 → <strong>ChatGPT</strong></li>
-    <li>ストーリー系・体験談 → <strong>Claude</strong></li>
-    <li>ショート動画 → <strong>ChatGPT</strong></li>
-    <li>長尺動画（10分以上） → <strong>Claude</strong></li>
-  </ul>
-
-  <!-- まとめ -->
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>基本3パターン＋ジャンル別6パターン＋補助4パターンの計13プロンプトを収録</li>
-      <li>解説・ショート動画は <strong>ChatGPT</strong>、ストーリー・長尺動画は <strong>Claude</strong> が得意</li>
-      <li>冒頭フック・タイトル・サムネ文言も補助プロンプトで一気に生成できる</li>
-    </ul>
-  </div>
-  <p>まずは今回紹介したプロンプトをコピペして、自分のチャンネルジャンルに合わせて調整してみてください。</p>
-
-  <div class="cta-block">
-    <p>より高精度な台本・長尺動画の構成作成にはPro版がおすすめです。</p>
-    <div class="btn-row">
-      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-primary">▶ ChatGPT Proを試す</a>
-      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-secondary">▶ Claude Proを試す</a>
-    </div>
-  </div>
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>基本3パターン＋ジャンル別6パターン＋補助2パターンの計11プロンプトを収録</li>
+<li>解説・ショート動画は <strong>ChatGPT</strong>、ストーリー・長尺動画は <strong>Claude</strong> が得意</li>
+<li>冒頭フック・タイトル・サムネ文言も補助プロンプトで一気に生成できる</li>
+</ul></div>
+<div class="cta-block"><p>より高精度な台本・長尺動画の構成作成にはAIスキル学習がおすすめです。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+D3K36+5UU0+5YRHE" class="btn-secondary" rel="nofollow">▶ 複数AIを1つに【Doraverse】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+D3K36+5UU0+5YRHE" alt="">
+</div></div>
 </div>
-
-<footer>
-  <p>© 2026 プロンプトラボ. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
 
 <script>
 function copyPrompt(btn) {
-  const pre = btn.parentElement.querySelector('pre');
-  navigator.clipboard.writeText(pre.innerText).then(() => {
-    btn.textContent = 'コピーしました！';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
-  });
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
 }
 </script>
+
 </body>
 </html>

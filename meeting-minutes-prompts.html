@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>議事録を自動要約するClaude・ChatGPTプロンプト集【コピペOK】| プロンプトラボ</title>
-  <meta name="description" content="シンプル要約・詳細・営業・1on1・経営会議など用途別9パターンの議事録作成プロンプトを無料公開。ChatGPTとClaudeの使い分けも解説。">
+  <meta name="description" content="基本3パターン＋用途別6パターンの議事録作成プロンプトを無料公開。">
   <meta property="og:title" content="議事録を自動要約するClaude・ChatGPTプロンプト集【コピペOK】">
   <meta property="og:type" content="article">
   <style>
@@ -13,12 +13,11 @@
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
     .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
     .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
     h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
     .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
@@ -29,100 +28,56 @@
     ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
     strong { color: #e0e0f8; }
-    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
-    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
-    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
-    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
-    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
-    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; transition: border-color .2s; }
-    .scene-card:hover { border-color: #2e2e4e; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
     .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
     .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
     .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
     .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
     pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
-    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; transition: background .2s; }
-    .copy-btn:hover { background: rgba(167,139,250,.28); }
-    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
-    .usage-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; font-style: italic; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
     .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
-    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
-    th { background: #1e1e2e; color: #a78bfa; padding: .6rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
-    td { padding: .6rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; text-align: center; }
-    td:first-child { text-align: left; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
     tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(167,139,250,.04); }
-    .tip-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0 1.4rem; }
-    .tip-title { font-size: .82rem; font-weight: 700; color: #a78bfa; margin-bottom: .5rem; }
     .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
     .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
     .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
-    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
-    .btn-secondary:hover { background: rgba(167,139,250,.1); }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
     .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
     .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
     footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
-  </style>
+</style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="/">職種別</a>
-    <a href="/">用途別</a>
-    <a href="/">副業</a>
-    <a href="/">無料PDF</a>
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
   </div>
 </nav>
-
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">トップ</a> &rsaquo; <a href="/">用途別</a> &rsaquo; 議事録自動要約
-  </div>
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">用途別</a> › 議事録自動要約</div>
+<span class="article-label">業務効率化</span>
+<h1>議事録を自動要約する<br>Claude・ChatGPTプロンプト集【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">会議が終わるたびに議事録作成で30分消えていませんか？<br><br>
+ChatGPTやClaudeに適切なプロンプトを渡せば、会議メモから<strong>数秒で議事録を自動生成</strong>できます。基本3パターン＋用途別6パターンの計9プロンプトをすべてコピペ可能な形で公開します。</div>
 
-  <span class="article-label">業務効率化</span>
-  <h1>議事録を自動要約する<br>Claude・ChatGPTプロンプト集【コピペOK】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
-
-  <div class="lead">
-    会議が終わるたびに議事録作成で30分消えていませんか？<br><br>
-    オンライン会議や社内ミーティングが増えたことで、「会議そのものより議事録作成のほうが大変」という会社員も少なくありません。ChatGPTやClaudeに適切なプロンプトを渡せば、会議メモから<strong>数秒で議事録を自動生成</strong>できます。
-  </div>
-
-  <!-- メリット -->
-  <h2>AIで議事録を作るメリット3つ</h2>
-  <div class="merit-grid">
-    <div class="merit-card">
-      <div class="merit-icon">⚡</div>
-      <div class="merit-title">時短</div>
-      <div class="merit-desc">会議時間と同じくらいかかっていた議事録作成が数分で完了する。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">✅</div>
-      <div class="merit-title">抜け漏れ防止</div>
-      <div class="merit-desc">AIが一定ルールで整理するため、重要な決定事項や担当者の見落としを防げる。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">📐</div>
-      <div class="merit-title">フォーマット統一</div>
-      <div class="merit-desc">担当者ごとの品質差をなくし、全社で同じ形式の議事録を作成できる。</div>
-    </div>
-  </div>
-
-  <!-- 基本3パターン -->
-  <h2>基本の議事録作成プロンプト（3パターン）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">①</div>
-    <div class="scene-title">シンプル要約型</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の会議メモを議事録として整理してください。
+<h2>基本の議事録作成プロンプト（3パターン）</h2>
+<div class="scene-card"><div class="scene-num">①</div><div class="scene-title">シンプル要約型</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の会議メモを議事録として整理してください。
 
 会議名：{{会議名}}
 日時：{{日時}}
@@ -133,18 +88,9 @@
 ■次回予定
 
 会議メモ：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：一般的な社内会議</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">②</div>
-    <div class="scene-title">詳細議事録型</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の会議内容から詳細な議事録を作成してください。
+{{会議内容}}</pre></div><p class="tip-note">一般的な社内会議</p></div>
+<div class="scene-card"><div class="scene-num">②</div><div class="scene-title">詳細議事録型</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の会議内容から詳細な議事録を作成してください。
 
 会議名：{{会議名}}
 
@@ -157,39 +103,19 @@
 ・次回会議予定
 
 会議内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：プロジェクト会議・重要会議</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">③</div>
-    <div class="scene-title">要点箇条書き型（超コンパクト）</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の会議内容を5行以内で要約してください。
+{{会議内容}}</pre></div><p class="tip-note">プロジェクト会議・重要会議</p></div>
+<div class="scene-card"><div class="scene-num">③</div><div class="scene-title">要点箇条書き型</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の会議内容を5行以内で要約してください。
 
 重要な内容のみ抽出し、
 箇条書きで出力してください。
 
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：Slack共有・上司への報告</p>
-  </div>
+{{会議内容}}</pre></div><p class="tip-note">Slack共有・上司への報告</p></div>
 
-  <hr class="divider">
 
-  <!-- 用途別6パターン -->
-  <h2>用途別プロンプト（6パターン）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">④</div>
-    <div class="scene-title">営業会議向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の営業会議内容を整理してください。
+<h2>用途別プロンプト（6パターン）</h2>
+<div class="scene-card"><div class="scene-num">④</div><div class="scene-title">営業会議向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の営業会議内容を整理してください。
 
 出力形式：
 ■顧客名
@@ -200,18 +126,9 @@
 ■担当者
 
 会議内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：商談後の情報共有</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑤</div>
-    <div class="scene-title">定例MTG向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の定例会議をまとめてください。
+{{会議内容}}</pre></div><p class="tip-note">商談後の情報共有</p></div>
+<div class="scene-card"><div class="scene-num">⑤</div><div class="scene-title">定例MTG向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の定例会議をまとめてください。
 
 出力形式：
 ■前回からの進捗
@@ -221,18 +138,9 @@
 ■次回対応
 
 会議内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：週次・月次ミーティング</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑥</div>
-    <div class="scene-title">1on1向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の1on1内容を整理してください。
+{{会議内容}}</pre></div><p class="tip-note">週次・月次ミーティング</p></div>
+<div class="scene-card"><div class="scene-num">⑥</div><div class="scene-title">1on1向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の1on1内容を整理してください。
 
 出力形式：
 ■本人の状況
@@ -241,18 +149,9 @@
 ■今後のアクション
 
 内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：マネジメント面談</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑦</div>
-    <div class="scene-title">プロジェクト会議向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下のプロジェクト会議を議事録化してください。
+{{会議内容}}</pre></div><p class="tip-note">マネジメント面談</p></div>
+<div class="scene-card"><div class="scene-num">⑦</div><div class="scene-title">プロジェクト会議向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下のプロジェクト会議を議事録化してください。
 
 出力形式：
 ■マイルストーン
@@ -263,18 +162,9 @@
 ■次回アクション
 
 会議内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：開発・制作プロジェクト</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑧</div>
-    <div class="scene-title">経営会議向け</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の経営会議内容を整理してください。
+{{会議内容}}</pre></div><p class="tip-note">開発・制作プロジェクト</p></div>
+<div class="scene-card"><div class="scene-num">⑧</div><div class="scene-title">経営会議向け</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の経営会議内容を整理してください。
 
 出力形式：
 ■重要指標・数値
@@ -286,18 +176,9 @@
 簡潔かつ正確にまとめてください。
 
 会議内容：
-{{会議内容}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：役員会議・経営会議</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑨</div>
-    <div class="scene-title">オンライン会議の文字起こし整理</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下はオンライン会議の文字起こしです。
+{{会議内容}}</pre></div><p class="tip-note">役員会議・経営会議</p></div>
+<div class="scene-card"><div class="scene-num">⑨</div><div class="scene-title">オンライン会議の文字起こし整理</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下はオンライン会議の文字起こしです。
 
 「あー」「えーと」などの
 不要な口語表現を削除し、
@@ -305,107 +186,44 @@
 
 決定事項とTODOを明確にしてください。
 
-{{文字起こし}}</pre>
-    </div>
-    <p class="usage-note">💡 使用場面：Zoom・Google Meet・Teams会議</p>
-  </div>
+{{文字起こし}}</pre></div><p class="tip-note">Zoom・Google Meet・Teams会議</p></div>
 
-  <hr class="divider">
 
-  <!-- 比較 -->
-  <h2>ChatGPTとClaudeどちらが議事録に向いているか</h2>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>比較項目</th><th>ChatGPT</th><th>Claude</th></tr></thead>
-      <tbody>
-        <tr><td>短い会議メモ</td><td>◎</td><td>○</td></tr>
-        <tr><td>長文文字起こし</td><td>○</td><td>◎</td></tr>
-        <tr><td>要約速度</td><td>◎</td><td>○</td></tr>
-        <tr><td>構造化</td><td>◎</td><td>◎</td></tr>
-        <tr><td>自然な文章</td><td>○</td><td>◎</td></tr>
-        <tr><td>議事録テンプレ生成</td><td>◎</td><td>○</td></tr>
-        <tr><td>大量テキスト処理</td><td>○</td><td>◎</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <ul>
-    <li>短い会議メモの整理 → <strong>ChatGPT</strong></li>
-    <li>長時間会議の文字起こし → <strong>Claude</strong></li>
-    <li>決定事項・TODOの抽出 → <strong>ChatGPT</strong></li>
-    <li>長文から流れを整理 → <strong>Claude</strong></li>
-  </ul>
-  <p>会議時間が30分以内ならChatGPT、1時間以上の複雑な議論ならClaudeが使いやすい傾向があります。</p>
-
-  <hr class="divider">
-
-  <!-- コツ -->
-  <h2>さらに精度を上げる3つのコツ</h2>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ① 発言者名を入れる</div>
-    <p style="margin-bottom:.6rem">AIは発言者情報があるほど精度が向上します。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>田中：〇〇について確認したい
-山田：先週の進捗は△△です
-佐藤：では□□で進めましょう</pre>
-    </div>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ② 事前に会議の目的を伝える</div>
-    <p style="margin-bottom:.6rem">会議の目的を先に入力すると、重要ポイントを優先的に抽出できます。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>会議目的：新サービスのリリース日を決定する</pre>
-    </div>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-title">コツ③ 修正指示を活用する</div>
-    <p style="margin-bottom:.6rem">1回で完璧な議事録を作る必要はありません。追加指示で改善できます。</p>
-    <div class="prompt-box" style="margin:0">
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>決定事項だけ抜き出してください。
-担当者と期限を表形式にしてください。
-経営層向けに1ページで要約してください。</pre>
-    </div>
-  </div>
-
-  <!-- まとめ -->
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>基本3パターン＋用途別6パターンの計9プロンプトをコピペして使える</li>
-      <li>短い会議メモは <strong>ChatGPT</strong>・長文文字起こしは <strong>Claude</strong> が得意</li>
-      <li>発言者名・会議目的の事前入力・修正指示で精度がさらに向上する</li>
-    </ul>
-  </div>
-  <p>まずは今回紹介したプロンプトをコピペして試してみてください。文字起こしデータと組み合わせると、会議終了後すぐに共有できる品質の議事録が作成できます。</p>
-
-  <div class="cta-block">
-    <p>長時間会議の文字起こしや複雑な議事録作成にはPro版がおすすめです。</p>
-    <div class="btn-row">
-      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-primary">▶ ChatGPT Proを試す</a>
-      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-secondary">▶ Claude Proを試す</a>
-    </div>
-  </div>
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>基本3パターン＋用途別6パターンの計9プロンプトをコピペして使える</li>
+<li>短い会議メモは <strong>ChatGPT</strong>・長文文字起こしは <strong>Claude</strong> が得意</li>
+<li>発言者名・会議目的の事前入力・修正指示で精度がさらに向上する</li>
+</ul></div>
+<div class="cta-block"><p>長時間会議の文字起こし・複雑な議事録作成にはAIスキル学習がおすすめです。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+D3K36+5UU0+5YRHE" class="btn-secondary" rel="nofollow">▶ 複数AIを1つに【Doraverse】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+D3K36+5UU0+5YRHE" alt="">
+</div></div>
 </div>
-
-<footer>
-  <p>© 2026 プロンプトラボ. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
 
 <script>
 function copyPrompt(btn) {
-  const pre = btn.parentElement.querySelector('pre');
-  navigator.clipboard.writeText(pre.innerText).then(() => {
-    btn.textContent = 'コピーしました！';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
-  });
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
 }
 </script>
+
 </body>
 </html>

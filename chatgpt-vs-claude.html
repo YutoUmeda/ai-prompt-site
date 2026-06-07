@@ -3,495 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatGPT・Claudeどっちが文章うまい？用途別に徹底比較【2026年版】</title>
-  <meta name="description" content="ChatGPTとClaudeの文章作成能力を用途別に比較。ビジネスメール・SNS・ブログ・副業など6軸でどちらを使うべきか早見表付きで解説。">
+  <title>ChatGPT・Claudeどっちが文章うまい？用途別に徹底比較【2026年版】| プロンプトラボ</title>
+  <meta name="description" content="ChatGPTとClaudeの文章作成能力を用途別に比較。ビジネスメール・SNS・ブログ・副業など6軸で解説。">
   <meta property="og:title" content="ChatGPT・Claudeどっちが文章うまい？用途別に徹底比較【2026年版】">
-  <meta property="og:description" content="ChatGPTとClaudeの文章作成能力を用途別に比較。ビジネスメール・SNS・ブログ・副業など6軸で解説。">
   <meta property="og:type" content="article">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
-      background: #0f0f13;
-      color: #e8e8f0;
-      line-height: 1.8;
-    }
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-      border-bottom: 1px solid #1e1e2e;
-      position: sticky; top: 0;
-      background: rgba(15,15,19,.94);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
-
-    /* LAYOUT */
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-    }
-
-    /* BREADCRUMB */
-    .breadcrumb {
-      font-size: .78rem;
-      color: #50508c;
-      margin-bottom: 1.5rem;
-    }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
-
-    /* ARTICLE HEADER */
-    .article-label {
-      display: inline-block;
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #a78bfa;
-      background: rgba(167,139,250,.12);
-      border: 1px solid rgba(167,139,250,.25);
-      padding: .25rem .7rem;
-      border-radius: 20px;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 800;
-      line-height: 1.3;
-      letter-spacing: -.02em;
-      margin-bottom: 1rem;
-      color: #f0f0fa;
-    }
-    .article-meta {
-      font-size: .8rem;
-      color: #50508c;
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #1e1e2e;
-    }
-
-    /* LEAD */
-    .lead {
-      font-size: 1rem;
-      color: #b0b0d0;
-      line-height: 1.9;
-      margin-bottom: 2rem;
-      padding: 1.2rem 1.4rem;
-      background: #16161e;
-      border-left: 3px solid #a78bfa;
-      border-radius: 0 8px 8px 0;
-    }
-
-    /* HEADINGS */
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #f0f0fa;
-      margin: 2.5rem 0 1rem;
-      padding-bottom: .5rem;
-      border-bottom: 1px solid #1e1e2e;
-    }
-    h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #c0c0e0;
-      margin: 1.6rem 0 .6rem;
-    }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.8rem 0 .6rem; }
     p { margin-bottom: 1rem; color: #c0c0d8; }
-
-    /* TABLE */
-    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .88rem;
-    }
-    th {
-      background: #1e1e2e;
-      color: #a78bfa;
-      padding: .6rem .9rem;
-      text-align: left;
-      font-weight: 600;
-      border-bottom: 1px solid #2e2e42;
-    }
-    td {
-      padding: .6rem .9rem;
-      border-bottom: 1px solid #1e1e2e;
-      color: #c0c0d8;
-      vertical-align: top;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(167,139,250,.04); }
-
-    /* CODE BLOCK */
-    .prompt-box {
-      background: #16161e;
-      border: 1px solid #2e2e3e;
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      margin: .8rem 0 1.4rem;
-      position: relative;
-    }
-    .prompt-label {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #a78bfa;
-      margin-bottom: .5rem;
-    }
-    pre {
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: .82rem;
-      color: #d0d0f0;
-      white-space: pre-wrap;
-      word-break: break-all;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .copy-btn {
-      position: absolute;
-      top: .7rem;
-      right: .7rem;
-      font-size: .72rem;
-      padding: .3rem .7rem;
-      background: rgba(167,139,250,.15);
-      border: 1px solid rgba(167,139,250,.3);
-      border-radius: 6px;
-      color: #a78bfa;
-      cursor: pointer;
-      transition: background .2s;
-    }
-    .copy-btn:hover { background: rgba(167,139,250,.28); }
-    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
-
-    /* LIST */
-    ol, ul {
-      padding-left: 1.4rem;
-      margin-bottom: 1rem;
-      color: #c0c0d8;
-    }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
-
-    /* CTA BLOCK */
-    .cta-block {
-      background: linear-gradient(135deg, #1a1025 0%, #16161e 100%);
-      border: 1px solid rgba(167,139,250,.3);
-      border-radius: 14px;
-      padding: 1.6rem 1.8rem;
-      margin: 2rem 0;
-      text-align: center;
-    }
-    .cta-block p {
-      font-size: .9rem;
-      color: #9090b0;
-      margin-bottom: 1rem;
-    }
-    .cta-btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn-cta-primary {
-      display: inline-block;
-      padding: .65rem 1.4rem;
-      background: #7c3aed;
-      color: #fff;
-      font-size: .88rem;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background .2s, transform .15s;
-    }
-    .btn-cta-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-cta-secondary {
-      display: inline-block;
-      padding: .65rem 1.4rem;
-      border: 1px solid rgba(167,139,250,.4);
-      color: #a78bfa;
-      font-size: .88rem;
-      font-weight: 500;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all .2s;
-    }
-    .btn-cta-secondary:hover { background: rgba(167,139,250,.1); }
-
-    /* SUMMARY BOX */
-    .summary-box {
-      background: #16161e;
-      border: 1px solid #2e2e42;
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      margin: 1.5rem 0;
-    }
-    .summary-box .summary-title {
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #a78bfa;
-      margin-bottom: .6rem;
-    }
-    .summary-box ul { margin: 0; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid #1e1e2e;
-      padding: 1.5rem 2rem;
-      text-align: center;
-      font-size: .78rem;
-      color: #40405c;
-    }
-  </style>
+    strong { color: #e0e0f8; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+</style>
 </head>
 <body>
-
 <nav>
-  <a href="/" class="logo">⚡ AIプロンプト集</a>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="/">職種別</a>
-    <a href="/">用途別</a>
-    <a href="/">副業</a>
-    <a href="/">無料PDF</a>
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
   </div>
 </nav>
-
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">トップ</a> &rsaquo; <a href="/">ツール比較</a> &rsaquo; ChatGPT vs Claude
-  </div>
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">ツール比較</a> › ChatGPT vs Claude</div>
+<span class="article-label">ツール比較</span>
+<h1>ChatGPT・Claudeどっちが文章うまい？<br>用途別に徹底比較【2026年版】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">あなたは今、ChatGPTとClaudeどちらを使うべきか迷っていませんか？<br><br>
+結論から言うと、<strong>文章作成においては優劣ではなく用途による使い分けが正解</strong>です。この記事では用途別に両者を徹底比較します。</div>
 
-  <span class="article-label">ツール比較</span>
-  <h1>ChatGPT・Claudeどっちが文章うまい？<br>用途別に徹底比較【2026年版】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<h2>結論：用途によって使い分けるのが正解</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>項目</th><th>ChatGPT</th><th>Claude</th></tr></thead>
+<tbody>
+<tr><td>得意分野</td><td>ビジネス文書・要約・翻訳</td><td>長文記事・自然な文章</td></tr>
+<tr><td>文章の特徴</td><td>論理的で整理されている</td><td>人間らしく読みやすい</td></tr>
+<tr><td>おすすめ用途</td><td>仕事・副業・SNS運用</td><td>ブログ・創作・解説記事</td></tr>
+</tbody></table></div>
 
-  <div class="lead">
-    あなたは今、ChatGPTとClaudeどちらを使うべきか迷っていませんか？<br><br>
-    AIによる文章作成が当たり前になった今、「ChatGPTとClaudeは結局どちらが優秀なのか」「文章を書くならどっちを選べばいいのか」と悩む人は少なくありません。<br><br>
-    結論から言うと、<strong>文章作成においては優劣ではなく用途による使い分けが正解</strong>です。この記事では用途別に両者を徹底比較します。
-  </div>
-
-  <!-- 結論 -->
-  <h2>結論：用途によって使い分けるのが正解</h2>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>項目</th><th>ChatGPT</th><th>Claude</th></tr></thead>
-      <tbody>
-        <tr><td>得意分野</td><td>ビジネス文書・要約・翻訳</td><td>長文記事・自然な文章</td></tr>
-        <tr><td>文章の特徴</td><td>論理的で整理されている</td><td>人間らしく読みやすい</td></tr>
-        <tr><td>おすすめ用途</td><td>仕事・副業・SNS運用</td><td>ブログ・創作・解説記事</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>仕事効率化ならChatGPT、読み物系コンテンツならClaudeがおすすめです。</p>
-
-  <!-- ChatGPT -->
-  <h2>ChatGPTが得意な文章5パターン</h2>
-
-  <h3>1. ビジネスメール</h3>
-  <p>ChatGPTは敬語やビジネスマナーを踏まえたメール作成が得意です。社外向けの連絡や謝罪メールでも安定した品質を出せます。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の内容で取引先へのお詫びメールを作成してください。
+<h2>ChatGPTが得意な文章5パターン</h2>
+<div class="scene-card"><div class="scene-num">1</div><div class="scene-title">ビジネスメール</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容で取引先へのお詫びメールを作成してください。
 
 ・納期が3日遅れる
 ・原因はシステム障害
 ・代替案も提案する
-・丁寧なビジネス文</pre>
-  </div>
-
-  <h3>2. SNS投稿</h3>
-  <p>X（旧Twitter）やInstagram向けの短文作成も得意です。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の内容をX向けに140文字以内で投稿文にしてください。
+・丁寧なビジネス文</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">2</div><div class="scene-title">SNS投稿</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の内容をX向けに140文字以内で投稿文にしてください。
 
 テーマ：副業でAIを活用するメリット
-口調：親しみやすい</pre>
-  </div>
+口調：親しみやすい</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">3</div><div class="scene-title">翻訳</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の英文を自然なビジネス日本語に翻訳してください。
 
-  <h3>3. 翻訳</h3>
-  <p>自然な日本語への翻訳や英語メール作成に強みがあります。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の英文を自然なビジネス日本語に翻訳してください。
+（英文を貼り付け）</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">4</div><div class="scene-title">箇条書き要約</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の文章を3つの要点にまとめてください。
 
-（英文を貼り付け）</pre>
-  </div>
+（文章を貼り付け）</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">5</div><div class="scene-title">セールスライティング</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の商品を販売するための広告文を作成してください。
 
-  <h3>4. 箇条書き要約</h3>
-  <p>会議メモや長文資料を短時間で整理できます。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の文章を3つの要点にまとめてください。
+商品：{{商品名}}
+ターゲット：{{ターゲット}}
+文字数：100文字以内</pre></div>
+</div>
 
-（文章を貼り付け）</pre>
-  </div>
-
-  <h3>5. セールスライティング</h3>
-  <p>広告文やLPの訴求文作成にも向いています。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の商品を販売するための広告文を作成してください。
-
-商品：格安SIM
-ターゲット：30代女性
-文字数：100文字以内</pre>
-  </div>
-
-  <!-- Claude -->
-  <h2>Claudeが得意な文章5パターン</h2>
-
-  <h3>1. 長文記事</h3>
-  <p>Claudeは自然な文章の流れを作るのが得意です。ブログ記事や解説記事との相性が非常に良好です。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>「AI副業の始め方」をテーマに3,000文字の記事を作成してください。
+<h2>Claudeが得意な文章5パターン</h2>
+<div class="scene-card"><div class="scene-num">1</div><div class="scene-title">長文記事</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>「{{テーマ}}」をテーマに3,000文字の記事を作成してください。
 
 初心者向け
 見出し付き
-自然な文章で</pre>
-  </div>
-
-  <h3>2. 感情表現</h3>
-  <p>感情を伴う文章や共感を重視した文章が得意です。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>転職に悩む人へ向けた応援メッセージを書いてください。
+自然な文章で</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">2</div><div class="scene-title">感情表現</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>{{テーマ}}について感情が伝わる文章を書いてください。
 
 共感を重視
-500文字程度</pre>
-  </div>
-
-  <h3>3. 議事録要約</h3>
-  <p>会議内容を読みやすく整理する能力が高めです。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下の会議メモを議事録形式で整理してください。
+500文字程度</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">3</div><div class="scene-title">議事録要約</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の会議メモを議事録形式で整理してください。
 
 ・決定事項
 ・課題
 ・次回アクション
 
-に分けてまとめてください。</pre>
-  </div>
+に分けてまとめてください。
 
-  <h3>4. コードコメント</h3>
-  <p>プログラミング初心者向けの説明文生成が得意です。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>以下のコードに初心者向けコメントを追加してください。
+（会議メモを貼り付け）</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">4</div><div class="scene-title">コードコメント</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下のコードに初心者向けコメントを追加してください。
 
-（コードを貼り付け）</pre>
-  </div>
+（コードを貼り付け）</pre></div>
+</div>
+<div class="scene-card"><div class="scene-num">5</div><div class="scene-title">丁寧な説明文</div>
+<div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>{{テーマ}}をIT初心者向けに分かりやすく説明してください。
 
-  <h3>5. 丁寧な説明文</h3>
-  <p>マニュアルや解説コンテンツ作成に向いています。</p>
-  <div class="prompt-box">
-    <div class="prompt-label">📋 プロンプト例</div>
-    <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-    <pre>ChatGPTの始め方をIT初心者向けに分かりやすく説明してください。
-
-専門用語は避ける</pre>
-  </div>
-
-  <!-- 早見表 -->
-  <h2>用途別おすすめ早見表</h2>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>用途</th><th>おすすめ</th><th>理由</th></tr></thead>
-      <tbody>
-        <tr><td>メール作成</td><td>ChatGPT</td><td>敬語・マナーに強い</td></tr>
-        <tr><td>SNS投稿</td><td>ChatGPT</td><td>短文・バリエーション生成が速い</td></tr>
-        <tr><td>ブログ記事</td><td>Claude</td><td>自然な長文が得意</td></tr>
-        <tr><td>副業コンテンツ制作</td><td>Claude</td><td>読みやすい文体で量産できる</td></tr>
-        <tr><td>翻訳</td><td>ChatGPT</td><td>精度・速度ともに安定</td></tr>
-        <tr><td>要約</td><td>ChatGPT</td><td>論理的な整理が得意</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>会社員の業務効率化が目的ならChatGPTが優勢。ブログ運営や情報発信が目的ならClaudeのほうが自然な文章を作りやすい傾向があります。</p>
-
-  <!-- 両方 -->
-  <h2>両方使うのがベストな理由</h2>
-  <p>どちらか一方だけを使うより両方を使い分けるほうが成果は出やすくなります。</p>
-  <ol>
-    <li>Claudeで長文記事を作成</li>
-    <li>ChatGPTで要約</li>
-    <li>ChatGPTでSNS投稿化</li>
-    <li>ChatGPTで広告文作成</li>
-  </ol>
-  <p>このように組み合わせることで作業効率が大幅に向上します。</p>
-
-  <h3>Pro版を使うべきタイミング</h3>
-  <p>以下に当てはまる場合は有料プランを検討する価値があります。</p>
-  <ul>
-    <li>毎日AIを使う</li>
-    <li>ブログや副業で収益化したい</li>
-    <li>業務効率化に活用したい</li>
-    <li>長文作成を頻繁に行う</li>
-  </ul>
-
-  <div class="cta-block">
-    <p>無料プランでも試せますが、本格的な業務利用はPro版がおすすめです。</p>
-    <div class="cta-btn-row">
-      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-cta-primary">▶ ChatGPT Proを試す</a>
-      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-cta-secondary">▶ Claude Proを試す</a>
-    </div>
-  </div>
-
-  <!-- まとめ -->
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>ビジネス文書・翻訳・要約なら <strong>ChatGPT</strong></li>
-      <li>長文記事・自然な文章なら <strong>Claude</strong></li>
-      <li>本気で活用するなら <strong>両方使うのがおすすめ</strong></li>
-    </ul>
-  </div>
-  <p>まずは無料版で使い比べ、自分の用途に合う方を見つけるのが最適な選び方です。</p>
-
-  <div class="cta-block">
-    <p>気に入ったツールはPro版でさらに威力を発揮します。</p>
-    <div class="cta-btn-row">
-      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-cta-primary">▶ ChatGPT Proを試す</a>
-      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-cta-secondary">▶ Claude Proを試す</a>
-    </div>
-  </div>
+専門用語は避ける</pre></div>
 </div>
 
-<footer>
-  <p>© 2026 AIプロンプト集. All rights reserved.</p>
-</footer>
+<h2>用途別おすすめ早見表</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>用途</th><th>おすすめ</th></tr></thead>
+<tbody>
+<tr><td>メール作成</td><td>ChatGPT</td></tr>
+<tr><td>SNS投稿</td><td>ChatGPT</td></tr>
+<tr><td>ブログ記事</td><td>Claude</td></tr>
+<tr><td>副業コンテンツ制作</td><td>Claude</td></tr>
+<tr><td>翻訳</td><td>ChatGPT</td></tr>
+<tr><td>要約</td><td>ChatGPT</td></tr>
+</tbody></table></div>
+
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>ビジネス文書・翻訳・要約なら <strong>ChatGPT</strong></li>
+<li>長文記事・自然な文章なら <strong>Claude</strong></li>
+<li>本気で活用するなら <strong>両方使うのがおすすめ</strong></li>
+</ul></div>
+<div style="margin:1rem 0"><p style="font-size:.78rem;color:#70708c;margin-bottom:.5rem">📚 関連書籍</p>
+<table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #2e2e42;width:300px;background:#16161e;border-radius:8px;overflow:hidden"><tbody><tr style="border-style:none"><td style="vertical-align:top;border-style:none;padding:10px;width:44px"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17890842%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21282617%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow"><img style="max-width:initial" border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6068/9784815626068_1_5.jpg?_ex=64x64"></a></td><td style="font-size:12px;vertical-align:middle;border-style:none;padding:10px;color:#c0c0d8"><p style="padding:0;margin:0"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17890842%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21282617%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow" style="color:#a78bfa">この一冊で全部わかる ChatGPT &amp; Copilotの教科書</a></p><p style="color:#70708c;margin-top:5px">価格:<span style="color:#f87171;font-weight:bold">1,980円</span></p></td></tr></tbody></table>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT" alt=""></div>
+<div style="margin:1rem 0">
+<table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #2e2e42;width:300px;background:#16161e;border-radius:8px;overflow:hidden"><tbody><tr style="border-style:none"><td style="vertical-align:top;border-style:none;padding:10px;width:44px"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17550641%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20998566%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow"><img style="max-width:initial" border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2367/9784866802367_1_2.jpg?_ex=64x64"></a></td><td style="font-size:12px;vertical-align:middle;border-style:none;padding:10px;color:#c0c0d8"><p style="padding:0;margin:0"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17550641%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20998566%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow" style="color:#a78bfa">ChatGPT最強の仕事術</a></p><p style="color:#70708c;margin-top:5px">価格:<span style="color:#f87171;font-weight:bold">1,870円</span></p></td></tr></tbody></table>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT" alt=""></div>
+<div class="cta-block"><p>AIスキルを高めてChatGPTもClaudeも使いこなしましょう。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+D3K36+5UU0+5YRHE" class="btn-secondary" rel="nofollow">▶ 複数AIを1つに【Doraverse】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+D3K36+5UU0+5YRHE" alt="">
+</div></div>
+</div>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
 
 <script>
 function copyPrompt(btn) {
-  const pre = btn.parentElement.querySelector('pre');
-  navigator.clipboard.writeText(pre.innerText).then(() => {
-    btn.textContent = 'コピーしました！';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'コピー';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
 }
 </script>
+
 </body>
 </html>

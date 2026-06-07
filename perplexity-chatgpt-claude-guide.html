@@ -13,70 +13,52 @@
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
     .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
     .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
     h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
     .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
     .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
     h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.8rem 0 .6rem; }
     p { margin-bottom: 1rem; color: #c0c0d8; }
     ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
     strong { color: #e0e0f8; }
-    .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
-    .role-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.1rem 1.2rem; text-align: center; }
-    .role-icon { font-size: 1.8rem; margin-bottom: .5rem; }
-    .role-tool { font-size: 1rem; font-weight: 700; color: #f0f0fa; margin-bottom: .2rem; }
-    .role-name { font-size: .88rem; font-weight: 600; color: #a78bfa; margin-bottom: .4rem; }
-    .role-desc { font-size: .78rem; color: #70708c; line-height: 1.5; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
     .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
     table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; white-space: nowrap; }
-    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; text-align: center; }
-    td:first-child { text-align: left; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
     tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(167,139,250,.04); }
-    .scene-grid { display: grid; gap: .8rem; margin: 1rem 0; }
-    .scene-row { display: flex; align-items: flex-start; gap: 1rem; background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem 1.2rem; transition: border-color .2s; }
-    .scene-row:hover { border-color: #2e2e4e; }
-    .scene-num { min-width: 28px; height: 28px; border-radius: 50%; background: rgba(167,139,250,.15); color: #a78bfa; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
-    .scene-body { flex: 1; }
-    .scene-situation { font-size: .8rem; color: #70708c; margin-bottom: .2rem; }
-    .scene-tool { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
-    .scene-reason { font-size: .82rem; color: #9090b0; margin: 0; line-height: 1.5; }
-    .tool-badge { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 4px; margin-left: .4rem; vertical-align: middle; }
-    .tb-px  { background: rgba(52,211,153,.15); color: #34d399; }
-    .tb-gpt { background: rgba(96,165,250,.15); color: #60a5fa; }
-    .tb-cl  { background: rgba(167,139,250,.15); color: #a78bfa; }
-    .flow-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.4rem 1.6rem; margin: 1.2rem 0; }
-    .flow-title { font-size: .82rem; font-weight: 700; color: #a78bfa; margin-bottom: 1rem; letter-spacing: .04em; }
-    .flow-steps { display: flex; flex-direction: column; gap: .6rem; }
-    .flow-step { display: flex; align-items: center; gap: .8rem; }
-    .flow-arrow { font-size: .8rem; color: #50508c; padding-left: 1.4rem; margin-top: -.4rem; }
-    .flow-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
-    .flow-text { font-size: .88rem; color: #c0c0d8; }
-    .flow-tool-tag { font-size: .72rem; font-weight: 600; padding: .15rem .5rem; border-radius: 4px; margin-left: .4rem; }
     .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
-    .cost-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: 1rem 0; }
-    .cost-table th { background: #1e1e2e; color: #a78bfa; padding: .6rem 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
-    .cost-table td { padding: .6rem 1rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; }
-    .cost-table tr:last-child td { border-bottom: none; }
     .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
     .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
-    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
-    .btn-secondary:hover { background: rgba(167,139,250,.1); }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
     .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
     .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
     footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
-  </style>
+</style>
 </head>
 <body>
 <nav>
@@ -86,169 +68,117 @@
   </div>
 </nav>
 <div class="container">
-  <div class="breadcrumb"><a href="/">トップ</a> › <a href="/">ツール比較</a> › Perplexity・ChatGPT・Claude使い分け</div>
-  <span class="article-label">ツール比較</span>
-  <h1>Perplexity・ChatGPT・Claudeの<br>使い分け完全ガイド【2026年版】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
-  <div class="lead">AIツールが増えすぎて、どれを使えばいいか迷っていませんか？<br><br>ChatGPT・Claude・Perplexityはそれぞれ得意分野が異なります。同じ使い方をしていると本来の性能を活かしきれません。<strong>「調べるならPerplexity・作業するならChatGPT・書くならClaude」</strong>というシーン別の使い分けが最も効率的です。</div>
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">ツール比較</a> › Perplexity・ChatGPT・Claude使い分け</div>
+<span class="article-label">ツール比較</span>
+<h1>Perplexity・ChatGPT・Claudeの<br>使い分け完全ガイド【2026年版】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">AIツールが増えすぎて、どれを使えばいいか迷っていませんか？<br><br>
+<strong>「調べるならPerplexity・作業するならChatGPT・書くならClaude」</strong>という使い分けが最も効率的です。シーン別8パターンで具体的に解説します。</div>
 
-  <h2>3ツールの特徴を一言で表すと</h2>
-  <div class="role-grid">
-    <div class="role-card">
-      <div class="role-icon">🔍</div>
-      <div class="role-tool">Perplexity</div>
-      <div class="role-name">AI検索エンジン</div>
-      <div class="role-desc">最新情報の調査・情報収集・リサーチが得意。出典付きで回答を生成する。</div>
-    </div>
-    <div class="role-card">
-      <div class="role-icon">🤖</div>
-      <div class="role-tool">ChatGPT</div>
-      <div class="role-name">万能アシスタント</div>
-      <div class="role-desc">文章作成・要約・翻訳・企画立案など幅広い業務をこなせる。</div>
-    </div>
-    <div class="role-card">
-      <div class="role-icon">⚡</div>
-      <div class="role-tool">Claude</div>
-      <div class="role-name">文章の専門家</div>
-      <div class="role-desc">長文執筆・自然な文章生成が得意。ブログ・noteとの相性が非常に良い。</div>
-    </div>
-  </div>
+<h2>3ツールの特徴を一言で表すと</h2>
+<div class="merit-grid">
+<div class="merit-card"><div class="merit-icon">🔍</div><div class="merit-title">Perplexity</div><div class="merit-desc">AI検索エンジン。最新情報の調査・情報収集・リサーチが得意。出典付きで回答を生成する。</div></div>
+<div class="merit-card"><div class="merit-icon">🤖</div><div class="merit-title">ChatGPT</div><div class="merit-desc">万能アシスタント。文章作成・要約・翻訳・企画立案など幅広い業務をこなせる。</div></div>
+<div class="merit-card"><div class="merit-icon">⚡</div><div class="merit-title">Claude</div><div class="merit-desc">文章の専門家。長文執筆・自然な文章生成が得意。ブログ・noteとの相性が非常に良い。</div></div>
+</div>
 
-  <h2>機能比較表</h2>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>比較項目</th><th>Perplexity</th><th>ChatGPT</th><th>Claude</th></tr></thead>
-      <tbody>
-        <tr><td>リアルタイム検索</td><td>◎</td><td>○</td><td>○</td></tr>
-        <tr><td>長文生成</td><td>△</td><td>○</td><td>◎</td></tr>
-        <tr><td>画像生成</td><td>×</td><td>◎</td><td>×</td></tr>
-        <tr><td>日本語品質</td><td>○</td><td>◎</td><td>◎</td></tr>
-        <tr><td>無料プラン</td><td>◎</td><td>○</td><td>○</td></tr>
-        <tr><td>情報収集</td><td>◎</td><td>○</td><td>△</td></tr>
-        <tr><td>ビジネス文書</td><td>△</td><td>◎</td><td>○</td></tr>
-        <tr><td>ブログ執筆</td><td>○</td><td>○</td><td>◎</td></tr>
-        <tr><td>SNS投稿</td><td>△</td><td>◎</td><td>○</td></tr>
-        <tr><td>翻訳</td><td>○</td><td>◎</td><td>○</td></tr>
-        <tr><td>議事録要約</td><td>○</td><td>○</td><td>◎</td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2>機能比較表</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>比較項目</th><th>Perplexity</th><th>ChatGPT</th><th>Claude</th></tr></thead>
+<tbody>
+<tr><td>リアルタイム検索</td><td style="text-align:center">◎</td><td style="text-align:center">○</td><td style="text-align:center">○</td></tr>
+<tr><td>長文生成</td><td style="text-align:center">△</td><td style="text-align:center">○</td><td style="text-align:center">◎</td></tr>
+<tr><td>日本語品質</td><td style="text-align:center">○</td><td style="text-align:center">◎</td><td style="text-align:center">◎</td></tr>
+<tr><td>情報収集</td><td style="text-align:center">◎</td><td style="text-align:center">○</td><td style="text-align:center">△</td></tr>
+<tr><td>ビジネス文書</td><td style="text-align:center">△</td><td style="text-align:center">◎</td><td style="text-align:center">○</td></tr>
+<tr><td>ブログ執筆</td><td style="text-align:center">○</td><td style="text-align:center">○</td><td style="text-align:center">◎</td></tr>
+<tr><td>議事録要約</td><td style="text-align:center">○</td><td style="text-align:center">○</td><td style="text-align:center">◎</td></tr>
+</tbody></table></div>
 
-  <hr class="divider">
-  <h2>シーン別使い分けガイド（8パターン）</h2>
-  <div class="scene-grid">
-    <div class="scene-row">
-      <div class="scene-num">①</div>
-      <div class="scene-body">
-        <div class="scene-situation">最新情報を調べたい</div>
-        <div class="scene-tool">→ Perplexity <span class="tool-badge tb-px">検索特化</span></div>
-        <p class="scene-reason">検索結果をもとに回答を生成するため、ニュース・市場動向・競合調査との相性が良好。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">②</div>
-      <div class="scene-body">
-        <div class="scene-situation">ビジネス文書を作りたい</div>
-        <div class="scene-tool">→ ChatGPT <span class="tool-badge tb-gpt">万能型</span></div>
-        <p class="scene-reason">指示への追従性が高く、メール・提案書・報告書などフォーマルな文章を安定して生成できる。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">③</div>
-      <div class="scene-body">
-        <div class="scene-situation">長文記事を書きたい</div>
-        <div class="scene-tool">→ Claude <span class="tool-badge tb-cl">長文特化</span></div>
-        <p class="scene-reason">文章の流れが自然で、体験談や考察記事にも向いている。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">④</div>
-      <div class="scene-body">
-        <div class="scene-situation">SNS投稿を量産したい</div>
-        <div class="scene-tool">→ ChatGPT <span class="tool-badge tb-gpt">万能型</span></div>
-        <p class="scene-reason">複数パターンを高速で出力できるため、SNS運用の効率化に役立つ。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">⑤</div>
-      <div class="scene-body">
-        <div class="scene-situation">翻訳したい</div>
-        <div class="scene-tool">→ ChatGPT <span class="tool-badge tb-gpt">万能型</span></div>
-        <p class="scene-reason">日本語と英語の翻訳品質は非常に高水準。ビジネスメールや資料翻訳との相性が良好。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">⑥</div>
-      <div class="scene-body">
-        <div class="scene-situation">議事録を要約したい</div>
-        <div class="scene-tool">→ Claude <span class="tool-badge tb-cl">長文特化</span></div>
-        <p class="scene-reason">大量のテキストから要点を抽出する能力に優れており、長い会議メモの整理に最適。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">⑦</div>
-      <div class="scene-body">
-        <div class="scene-situation">市場調査・リサーチ</div>
-        <div class="scene-tool">→ Perplexity <span class="tool-badge tb-px">検索特化</span></div>
-        <p class="scene-reason">情報源を確認しながら調査を進められるため、SEO記事の下調べにも向いている。</p>
-      </div>
-    </div>
-    <div class="scene-row">
-      <div class="scene-num">⑧</div>
-      <div class="scene-body">
-        <div class="scene-situation">note・ブログを書きたい</div>
-        <div class="scene-tool">→ Claude <span class="tool-badge tb-cl">長文特化</span></div>
-        <p class="scene-reason">読みやすく人間らしい文章を作りやすいため、コンテンツ制作との相性が非常に良好。</p>
-      </div>
-    </div>
-  </div>
+<h2>シーン別使い分けガイド（8パターン）</h2>
+<div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">①</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">最新情報を調べたい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ Perplexity <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(52,211,153,.15);color:#34d399">検索特化</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">検索結果をもとに回答を生成するため、ニュース・市場動向・競合調査との相性が良好。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">②</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">ビジネス文書を作りたい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ ChatGPT <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(96,165,250,.15);color:#60a5fa">万能型</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">指示への追従性が高く、メール・提案書・報告書などフォーマルな文章を安定して生成できる。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">③</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">長文記事を書きたい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ Claude <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(167,139,250,.15);color:#a78bfa">長文特化</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">文章の流れが自然で、体験談や考察記事にも向いている。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">④</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">SNS投稿を量産したい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ ChatGPT <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(96,165,250,.15);color:#60a5fa">万能型</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">複数パターンを高速で出力できるため、SNS運用の効率化に役立つ。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">⑤</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">翻訳したい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ ChatGPT <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(96,165,250,.15);color:#60a5fa">万能型</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">日本語と英語の翻訳品質は非常に高水準。ビジネスメールや資料翻訳との相性が良好。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">⑥</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">議事録を要約したい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ Claude <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(167,139,250,.15);color:#a78bfa">長文特化</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">大量のテキストから要点を抽出する能力に優れており、長い会議メモの整理に最適。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">⑦</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">市場調査・リサーチ</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ Perplexity <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(52,211,153,.15);color:#34d399">検索特化</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">情報源を確認しながら調査を進められるため、SEO記事の下調べにも向いている。</p></div></div><div style="display:flex;align-items:flex-start;gap:1rem;background:#16161e;border:1px solid #1e1e2e;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem">
+<div style="min-width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0">⑧</div>
+<div><div style="font-size:.8rem;color:#70708c;margin-bottom:.2rem">note・ブログを書きたい</div>
+<div style="font-size:.95rem;font-weight:600;color:#e0e0f8">→ Claude <span style="font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:4px;margin-left:.4rem;background:rgba(167,139,250,.15);color:#a78bfa">長文特化</span></div>
+<p style="font-size:.82rem;color:#9090b0;margin:.3rem 0 0;line-height:1.5">読みやすく人間らしい文章を作りやすいため、コンテンツ制作との相性が非常に良好。</p></div></div>
 
-  <hr class="divider">
-  <h2>3つ全部使うのがベストな理由</h2>
-  <p>実際にAIを仕事や副業で活用している人ほど、複数ツールを併用しています。それぞれの強みが明確に異なるからです。</p>
+<h2>3つ全部使うのがベストな理由</h2>
+<p>実際にAIを仕事や副業で活用している人ほど、複数ツールを併用しています。</p>
+<div style="background:#16161e;border:1px solid #2e2e42;border-radius:12px;padding:1.4rem 1.6rem;margin:1rem 0">
+<p style="font-size:.82rem;font-weight:700;color:#a78bfa;margin-bottom:1rem">🔄 SEO記事作成の最適フロー</p>
+<p style="font-size:.88rem;color:#c0c0d8">🔍 Perplexityで情報収集</p>
+<p style="font-size:.8rem;color:#50508c;margin:.2rem 0 .2rem 1rem">↓</p>
+<p style="font-size:.88rem;color:#c0c0d8">✍️ Claudeで記事執筆</p>
+<p style="font-size:.8rem;color:#50508c;margin:.2rem 0 .2rem 1rem">↓</p>
+<p style="font-size:.88rem;color:#c0c0d8">📣 ChatGPTで要約・SNS投稿化</p>
+</div>
 
-  <div class="flow-box">
-    <div class="flow-title">🔄 SEO記事作成の最適フロー</div>
-    <div class="flow-steps">
-      <div class="flow-step"><div class="flow-icon">🔍</div><div class="flow-text">Perplexityで情報収集・リサーチ <span class="flow-tool-tag tb-px">Perplexity</span></div></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-icon">✍️</div><div class="flow-text">Claudeで記事執筆 <span class="flow-tool-tag tb-cl">Claude</span></div></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-icon">📣</div><div class="flow-text">ChatGPTで要約・SNS投稿化 <span class="flow-tool-tag tb-gpt">ChatGPT</span></div></div>
-    </div>
-  </div>
-
-  <p>この流れを覚えておくだけで、AI活用の効率は大きく向上します。</p>
-
-  <h3>月額コスト比較</h3>
-  <table class="cost-table">
-    <thead><tr><th>ツール</th><th>有料プラン目安</th></tr></thead>
-    <tbody>
-      <tr><td>Perplexity Pro</td><td>月額約20ドル（約3,000円）</td></tr>
-      <tr><td>ChatGPT Pro</td><td>月額約20ドル（約3,000円）</td></tr>
-      <tr><td>Claude Pro</td><td>月額約20ドル（約3,000円）</td></tr>
-    </tbody>
-  </table>
-  <p>すべて契約するとコストは上がりますが、仕事や副業で活用する場合は十分回収できるケースが多くあります。まずはChatGPTかClaudeの1本から始め、用途に応じてPerplexityを追加するのがおすすめです。</p>
-
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>調査なら <strong>Perplexity</strong>・作業なら <strong>ChatGPT</strong>・執筆なら <strong>Claude</strong></li>
-      <li>SEO記事は「Perplexity→Claude→ChatGPT」の3ツール連携フローが最も効率的</li>
-      <li>まずChatGPTかClaudeを導入し、必要に応じてPerplexityを組み合わせる</li>
-    </ul>
-  </div>
-
-  <div class="cta-block">
-    <p>まずChatGPT ProかClaude Proを導入して、AI活用の土台を作りましょう。</p>
-    <div class="btn-row">
-      <a href="[CHATGPT_AFFILIATE_LINK]" class="btn-primary">▶ ChatGPT Proを試す</a>
-      <a href="[CLAUDE_AFFILIATE_LINK]" class="btn-secondary">▶ Claude Proを試す</a>
-    </div>
-  </div>
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>調査なら <strong>Perplexity</strong>・作業なら <strong>ChatGPT</strong>・執筆なら <strong>Claude</strong></li>
+<li>SEO記事は「Perplexity→Claude→ChatGPT」の3ツール連携フローが最も効率的</li>
+<li>まずChatGPTかClaudeを導入し、必要に応じてPerplexityを組み合わせる</li>
+</ul></div>
+<div style="margin:1rem 0"><p style="font-size:.78rem;color:#70708c;margin-bottom:.5rem">📚 関連書籍</p>
+<table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #2e2e42;width:300px;background:#16161e;border-radius:8px;overflow:hidden"><tbody><tr style="border-style:none"><td style="vertical-align:top;border-style:none;padding:10px;width:44px"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17890842%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21282617%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow"><img style="max-width:initial" border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6068/9784815626068_1_5.jpg?_ex=64x64"></a></td><td style="font-size:12px;vertical-align:middle;border-style:none;padding:10px;color:#c0c0d8"><p style="padding:0;margin:0"><a href="https://rpx.a8.net/svt/ejp?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa26060220692_4B5MC4_G3W7ZM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F17890842%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F21282617%252F%26rafcid%3Dwsc_i_is_a9f492a7-8ef9-40e2-ab89-4bc43a1ee283" rel="nofollow" style="color:#a78bfa">この一冊で全部わかる ChatGPT &amp; Copilotの教科書</a></p><p style="color:#70708c;margin-top:5px">価格:<span style="color:#f87171;font-weight:bold">1,980円</span></p></td></tr></tbody></table>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B5MC4+G3W7ZM+2HOM+BWGDT" alt=""></div>
+<div class="cta-block"><p>まずはAIスキルを高めて3ツールを使いこなしましょう。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+D3K36+5UU0+5YRHE" class="btn-secondary" rel="nofollow">▶ 複数AIを1つに【Doraverse】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+D3K36+5UU0+5YRHE" alt="">
+</div></div>
 </div>
 <footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
+
+<script>
+function copyPrompt(btn) {
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+
 </body>
 </html>

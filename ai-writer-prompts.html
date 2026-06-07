@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI副業ライターが使うChatGPTプロンプト30選【コピペOK】| プロンプトラボ</title>
-  <meta name="description" content="記事構成・本文執筆・クライアント対応・収益化まで副業ライター業務を効率化するChatGPTプロンプト30選を無料公開。コピペしてすぐ使えます。">
+  <meta name="description" content="企画・執筆・クライアント対応・収益化まで副業ライター業務を効率化するChatGPTプロンプト30選を無料公開。">
   <meta property="og:title" content="AI副業ライターが使うChatGPTプロンプト30選【コピペOK】">
   <meta property="og:type" content="article">
   <style>
@@ -13,12 +13,11 @@
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
     .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; transition: color .2s; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
     .nav-links a:hover { color: #e8e8f0; }
     .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
     .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #7070b0; text-decoration: none; }
-    .breadcrumb a:hover { color: #a78bfa; }
     .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
     h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
     .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
@@ -26,132 +25,67 @@
     h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
     h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.8rem 0 .6rem; }
     p { margin-bottom: 1rem; color: #c0c0d8; }
-    ol, ul { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
     li { margin-bottom: .4rem; line-height: 1.7; }
     strong { color: #e0e0f8; }
-    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
-    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
-    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
-    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
-    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
-    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; transition: border-color .2s; }
-    .scene-card:hover { border-color: #2e2e4e; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
     .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
     .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
     .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
     .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
     pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
-    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; transition: background .2s; }
-    .copy-btn:hover { background: rgba(167,139,250,.28); }
-    .copy-btn.copied { color: #4ade80; border-color: #4ade80; background: rgba(74,222,128,.1); }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
     .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
     .tip-note::before { content: "💡 "; }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    th { background: #1e1e2e; color: #a78bfa; padding: .65rem .9rem; text-align: left; font-weight: 600; border-bottom: 1px solid #2e2e42; }
+    td { padding: .65rem .9rem; border-bottom: 1px solid #1e1e2e; color: #c0c0d8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
     .divider { border: none; border-top: 1px solid #1e1e2e; margin: 2rem 0; }
     .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
     .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
-    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background .2s, transform .15s; }
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
-    .btn-secondary:hover { background: rgba(167,139,250,.1); }
+    .btn-row { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    .btn-secondary { display: inline-block; padding: .7rem 1.6rem; border: 1px solid rgba(167,139,250,.4); color: #a78bfa; font-size: .88rem; font-weight: 500; border-radius: 8px; text-decoration: none; }
     .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
     .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
-    .toc { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0 2rem; }
-    .toc-title { font-size: .82rem; font-weight: 700; color: #a78bfa; margin-bottom: .6rem; }
-    .toc ul { margin: 0; padding-left: 1.2rem; }
-    .toc li { font-size: .82rem; color: #9090b0; margin-bottom: .2rem; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
     footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
-  </style>
+</style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="logo">⚡ プロンプトラボ</a>
   <div class="nav-links">
-    <a href="/">職種別</a>
-    <a href="/">用途別</a>
-    <a href="/">副業</a>
-    <a href="/">無料PDF</a>
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
   </div>
 </nav>
-
 <div class="container">
-  <div class="breadcrumb">
-    <a href="/">トップ</a> &rsaquo; <a href="/">副業・ライター</a> &rsaquo; ChatGPTプロンプト30選
-  </div>
-
-  <span class="article-label">副業・ライター</span>
-  <h1>AI副業ライターが使う<br>ChatGPTプロンプト30選【コピペOK】</h1>
-  <div class="article-meta">2026年6月 更新 ｜ 読了時間: 約8分</div>
-
-  <div class="lead">
-    副業ライターの作業時間、ChatGPTで半分にできます。<br><br>
-    記事構成の作成、本文執筆、クライアント対応、リサーチまで、ライター業務の多くはChatGPTで効率化できます。成果を出しているAIライターほど「どんなプロンプトを使うか」を重視しています。<br><br>
-    企画・執筆・営業・案件管理まで幅広く使える<strong>プロンプト30選</strong>をすべてコピペ可能な形で公開します。
-  </div>
-
-  <!-- 目次 -->
-  <div class="toc">
-    <div class="toc-title">📋 目次</div>
-    <ul>
-      <li>AI副業ライターにChatGPTが向いている3つの理由</li>
-      <li>記事構成・企画プロンプト（①〜⑧）</li>
-      <li>本文執筆プロンプト（⑨〜⑱）</li>
-      <li>クライアント対応プロンプト（⑲〜㉔）</li>
-      <li>収益化・効率化プロンプト（㉕〜㉚）</li>
-    </ul>
-  </div>
-
-  <!-- メリット -->
-  <h2>AI副業ライターにChatGPTが向いている3つの理由</h2>
-  <div class="merit-grid">
-    <div class="merit-card">
-      <div class="merit-icon">⚡</div>
-      <div class="merit-title">構成案を爆速で作れる</div>
-      <div class="merit-desc">キーワードを入力するだけで記事全体の骨組みが完成する。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">📏</div>
-      <div class="merit-title">文字数調整が簡単</div>
-      <div class="merit-desc">500文字増やす・半分に要約するなどの調整が短時間で行える。</div>
-    </div>
-    <div class="merit-card">
-      <div class="merit-icon">🔍</div>
-      <div class="merit-title">リサーチ補助として優秀</div>
-      <div class="merit-desc">テーマの整理や論点抽出を効率化でき、執筆スピードが大幅に向上する。</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 構成・企画 -->
-  <h2>記事構成・企画プロンプト（8個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">①</div>
-    <div class="scene-title">キーワードから記事タイトルを10個生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>キーワード：{{キーワード}}
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">副業・ライター</a> › ChatGPTプロンプト30選</div>
+<span class="article-label">副業・ライター</span>
+<h1>AI副業ライターが使う<br>ChatGPTプロンプト30選【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約8分</div>
+<div class="lead">副業ライターの作業時間、ChatGPTで半分にできます。<br><br>
+企画・執筆・クライアント対応・案件管理まで幅広く使える<strong>プロンプト30選</strong>をすべてコピペ可能な形で公開します。</div>
+<h2>記事構成・企画プロンプト（8個）</h2>
+<div class="scene-card"><div class="scene-num">①</div><div class="scene-title">キーワードから記事タイトルを10個生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>キーワード：{{キーワード}}
 
 SEOを意識した記事タイトルを10個作成してください。
 
 条件：
 ・32文字以内
 ・クリック率を意識
-・検索意図に合致</pre>
-    </div>
-    <p class="tip-note">複数案を比較してCTRが高そうなものを選ぶ</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">②</div>
-    <div class="scene-title">記事の構成案（H2・H3）を作成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>キーワード：{{キーワード}}
+・検索意図に合致</pre></div><p class="tip-note">複数案を比較してCTRが高そうなものを選ぶ</p></div>
+<div class="scene-card"><div class="scene-num">②</div><div class="scene-title">記事の構成案（H2・H3）を作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>キーワード：{{キーワード}}
 
 SEO記事の構成案を作成してください。
 
@@ -159,408 +93,139 @@ SEO記事の構成案を作成してください。
 H2
 H3
 
-検索意図を満たす構成にしてください。</pre>
-    </div>
-    <p class="tip-note">記事執筆前に必ず実行する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">③</div>
-    <div class="scene-title">読者ペルソナを設定する</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>キーワード：{{キーワード}}
+検索意図を満たす構成にしてください。</pre></div><p class="tip-note">記事執筆前に必ず実行する</p></div>
+<div class="scene-card"><div class="scene-num">③</div><div class="scene-title">読者ペルソナを設定する</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>キーワード：{{キーワード}}
 
 検索ユーザーのペルソナを作成してください。
 
 ・年齢
 ・職業
 ・悩み
-・検索目的</pre>
-    </div>
-    <p class="tip-note">読者像が明確になると執筆しやすい</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">④</div>
-    <div class="scene-title">競合記事との差別化ポイントを考える</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：{{テーマ}}
-
-競合記事と差別化できる切り口を10個提案してください。</pre>
-    </div>
-    <p class="tip-note">独自性のある記事作成に活用する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑤</div>
-    <div class="scene-title">リード文を3パターン生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>記事タイトル：{{タイトル}}
+・検索目的</pre></div><p class="tip-note">読者像が明確になると執筆しやすい</p></div>
+<div class="scene-card"><div class="scene-num">④</div><div class="scene-title">リード文を3パターン生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>記事タイトル：{{タイトル}}
 
 リード文を3パターン作成してください。
 
 共感型
 問題提起型
-結論先出し型</pre>
-    </div>
-    <p class="tip-note">最も離脱率が下がりそうなものを採用する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑥</div>
-    <div class="scene-title">まとめ文を生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の記事内容をもとに
+結論先出し型</pre></div><p class="tip-note">最も離脱率が下がりそうなものを採用する</p></div>
+<div class="scene-card"><div class="scene-num">⑤</div><div class="scene-title">まとめ文を生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の記事内容をもとに
 まとめ文を300文字で作成してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">CTA前に設置すると自然に締められる</p>
-  </div>
+{{本文}}</pre></div><p class="tip-note">CTA前に設置すると自然に締められる</p></div>
+<div class="scene-card"><div class="scene-num">⑥</div><div class="scene-title">タイトルをSEO最適化する</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下のタイトルをSEO向けに改善してください。
 
-  <div class="scene-card">
-    <div class="scene-num">⑦</div>
-    <div class="scene-title">タイトルをSEO最適化する</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下のタイトルをSEO向けに改善してください。
-
-{{タイトル}}</pre>
-    </div>
-    <p class="tip-note">検索キーワードを左側へ寄せる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑧</div>
-    <div class="scene-title">メタディスクリプションを生成</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>記事タイトル：
+{{タイトル}}</pre></div><p class="tip-note">検索キーワードを左側へ寄せる</p></div>
+<div class="scene-card"><div class="scene-num">⑦</div><div class="scene-title">メタディスクリプションを生成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>記事タイトル：
 {{タイトル}}
 
-120文字程度のメタディスクリプションを作成してください。</pre>
-    </div>
-    <p class="tip-note">クリックしたくなる要素を含める</p>
-  </div>
+120文字程度のメタディスクリプションを作成してください。</pre></div><p class="tip-note">クリックしたくなる要素を含める</p></div>
+<div class="scene-card"><div class="scene-num">⑧</div><div class="scene-title">競合記事との差別化ポイントを考える</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：{{テーマ}}
 
-  <hr class="divider">
-
-  <!-- 本文執筆 -->
-  <h2>本文執筆プロンプト（10個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">⑨</div>
-    <div class="scene-title">H2見出しの本文を書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>見出し：
+競合記事と差別化できる切り口を10個提案してください。</pre></div><p class="tip-note">独自性のある記事作成に活用する</p></div>
+<h2>本文執筆プロンプト（10個）</h2>
+<div class="scene-card"><div class="scene-num">⑨</div><div class="scene-title">H2見出しの本文を書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>見出し：
 {{見出し}}
 
-800文字程度で本文を書いてください。</pre>
-    </div>
-    <p class="tip-note">見出し単位で書かせると精度が高い</p>
-  </div>
+800文字程度で本文を書いてください。</pre></div><p class="tip-note">見出し単位で書かせると精度が高い</p></div>
+<div class="scene-card"><div class="scene-num">⑩</div><div class="scene-title">箇条書きを文章に変換</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下を自然な文章にしてください。
 
-  <div class="scene-card">
-    <div class="scene-num">⑩</div>
-    <div class="scene-title">箇条書きを文章に変換</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下を自然な文章にしてください。
+{{箇条書き}}</pre></div><p class="tip-note">説明不足の箇所を補完できる</p></div>
+<div class="scene-card"><div class="scene-num">⑪</div><div class="scene-title">文章をわかりやすく言い換える</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下を中学生でも理解できる文章へ言い換えてください。
 
-{{箇条書き}}</pre>
-    </div>
-    <p class="tip-note">説明不足の箇所を補完できる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑪</div>
-    <div class="scene-title">文章をわかりやすく言い換える</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下を中学生でも理解できる文章へ言い換えてください。
-
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">専門性が高い記事で有効</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑫</div>
-    <div class="scene-title">文字数を増やす（水増しなし）</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の文章を内容を薄めずに
+{{本文}}</pre></div><p class="tip-note">専門性が高い記事で有効</p></div>
+<div class="scene-card"><div class="scene-num">⑫</div><div class="scene-title">文字数を増やす（水増しなし）</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の文章を内容を薄めずに
 1.5倍へ拡張してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">具体例追加を指示するとさらに良い</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑬</div>
-    <div class="scene-title">文字数を減らす</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下を要点を残して
+{{本文}}</pre></div><p class="tip-note">具体例追加を指示するとさらに良い</p></div>
+<div class="scene-card"><div class="scene-num">⑬</div><div class="scene-title">文字数を減らす</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下を要点を残して
 50％まで圧縮してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">納品前の調整に便利</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑭</div>
-    <div class="scene-title">専門用語を初心者向けに説明</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の専門用語を初心者向けに説明してください。
-
-{{専門用語}}</pre>
-    </div>
-    <p class="tip-note">監修記事でも活躍する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑮</div>
-    <div class="scene-title">体験談・具体例を追加する</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の記事に具体例を追加してください。
-
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">読者の理解度が向上する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">⑯</div>
-    <div class="scene-title">文章の語尾を統一する</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の文章を
+{{本文}}</pre></div><p class="tip-note">納品前の調整に便利</p></div>
+<div class="scene-card"><div class="scene-num">⑭</div><div class="scene-title">語尾を統一する</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の文章を
 「です・ます調」に統一してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">納品前チェックとして使う</p>
-  </div>
+{{本文}}</pre></div><p class="tip-note">納品前チェックとして使う</p></div>
+<div class="scene-card"><div class="scene-num">⑮</div><div class="scene-title">冗長な表現を削除する</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の文章を簡潔にしてください。
 
-  <div class="scene-card">
-    <div class="scene-num">⑰</div>
-    <div class="scene-title">冗長な表現を削除する</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の文章を簡潔にしてください。
+{{本文}}</pre></div><p class="tip-note">読みやすさ改善に有効</p></div>
+<div class="scene-card"><div class="scene-num">⑯</div><div class="scene-title">読みやすく段落を整える</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の文章をWEB記事向けに整形してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">読みやすさ改善に有効</p>
-  </div>
+{{本文}}</pre></div><p class="tip-note">スマホ閲覧を意識する</p></div>
+<div class="scene-card"><div class="scene-num">⑰</div><div class="scene-title">体験談・具体例を追加する</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の記事に具体例を追加してください。
 
-  <div class="scene-card">
-    <div class="scene-num">⑱</div>
-    <div class="scene-title">読みやすく段落を整える</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の文章をWEB記事向けに整形してください。
+{{本文}}</pre></div><p class="tip-note">読者の理解度が向上する</p></div>
+<div class="scene-card"><div class="scene-num">⑱</div><div class="scene-title">専門用語を初心者向けに説明</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の専門用語を初心者向けに説明してください。
 
-{{本文}}</pre>
-    </div>
-    <p class="tip-note">スマホ閲覧を意識する</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- クライアント対応 -->
-  <h2>クライアント対応プロンプト（6個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">⑲</div>
-    <div class="scene-title">提案メールを書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>案件内容：
+{{専門用語}}</pre></div><p class="tip-note">監修記事でも活躍する</p></div>
+<h2>クライアント対応プロンプト（6個）</h2>
+<div class="scene-card"><div class="scene-num">⑲</div><div class="scene-title">提案メールを書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>案件内容：
 {{案件}}
 
-提案メールを作成してください。</pre>
-    </div>
-    <p class="tip-note">実績や強みも追加する</p>
-  </div>
+提案メールを作成してください。</pre></div><p class="tip-note">実績や強みも追加する</p></div>
+<div class="scene-card"><div class="scene-num">⑳</div><div class="scene-title">修正対応メールを書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の修正依頼への返信を作成してください。
 
-  <div class="scene-card">
-    <div class="scene-num">⑳</div>
-    <div class="scene-title">修正対応メールを書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の修正依頼への返信を作成してください。
-
-{{内容}}</pre>
-    </div>
-    <p class="tip-note">感謝を最初に入れる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉑</div>
-    <div class="scene-title">納品メールを書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>記事納品メールを作成してください。
+{{内容}}</pre></div><p class="tip-note">感謝を最初に入れる</p></div>
+<div class="scene-card"><div class="scene-num">㉑</div><div class="scene-title">納品メールを書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>記事納品メールを作成してください。
 
 記事名：
-{{記事名}}</pre>
-    </div>
-    <p class="tip-note">修正対応可能である旨を添える</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉒</div>
-    <div class="scene-title">単価交渉メールを書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>文字単価アップ交渉メールを作成してください。
+{{記事名}}</pre></div><p class="tip-note">修正対応可能である旨を添える</p></div>
+<div class="scene-card"><div class="scene-num">㉒</div><div class="scene-title">単価交渉メールを書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>文字単価アップ交渉メールを作成してください。
 
 現単価：{{単価}}
-希望単価：{{単価}}</pre>
-    </div>
-    <p class="tip-note">実績を数値で示す</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉓</div>
-    <div class="scene-title">クラウドワークス応募文を書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>募集内容：
+希望単価：{{単価}}</pre></div><p class="tip-note">実績を数値で示す</p></div>
+<div class="scene-card"><div class="scene-num">㉓</div><div class="scene-title">クラウドワークス応募文を書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>募集内容：
 {{募集内容}}
 
-応募文を作成してください。</pre>
-    </div>
-    <p class="tip-note">募集要項への回答を盛り込む</p>
-  </div>
+応募文を作成してください。</pre></div><p class="tip-note">募集要項への回答を盛り込む</p></div>
+<div class="scene-card"><div class="scene-num">㉔</div><div class="scene-title">自己PR文を書く</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の実績から自己PRを作成してください。
 
-  <div class="scene-card">
-    <div class="scene-num">㉔</div>
-    <div class="scene-title">自己PR文を書く</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の実績から自己PRを作成してください。
-
-{{実績}}</pre>
-    </div>
-    <p class="tip-note">数字を含めると強い</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- 収益化 -->
-  <h2>収益化・効率化プロンプト（6個）</h2>
-
-  <div class="scene-card">
-    <div class="scene-num">㉕</div>
-    <div class="scene-title">記事ジャンルの市場調査をする</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>ジャンル：
+{{実績}}</pre></div><p class="tip-note">数字を含めると強い</p></div>
+<h2>収益化・効率化プロンプト（6個）</h2>
+<div class="scene-card"><div class="scene-num">㉕</div><div class="scene-title">記事ジャンルの市場調査をする</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>ジャンル：
 {{ジャンル}}
 
-需要・競合・収益性を分析してください。</pre>
-    </div>
-    <p class="tip-note">参入前に確認する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉖</div>
-    <div class="scene-title">月間スケジュールを作る</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>目標収入：
+需要・競合・収益性を分析してください。</pre></div><p class="tip-note">参入前に確認する</p></div>
+<div class="scene-card"><div class="scene-num">㉖</div><div class="scene-title">月間スケジュールを作る</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>目標収入：
 {{目標}}
 
 週10時間稼働で
-月間計画を作成してください。</pre>
-    </div>
-    <p class="tip-note">現実的な目標設定が重要</p>
-  </div>
+月間計画を作成してください。</pre></div><p class="tip-note">現実的な目標設定が重要</p></div>
+<div class="scene-card"><div class="scene-num">㉗</div><div class="scene-title">ポートフォリオ用の実績まとめを作る</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の実績をポートフォリオ向けに整理してください。
 
-  <div class="scene-card">
-    <div class="scene-num">㉗</div>
-    <div class="scene-title">文字単価交渉の根拠を作る</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の実績をもとに
-単価アップの根拠を整理してください。
-
-{{実績}}</pre>
-    </div>
-    <p class="tip-note">数字が多いほど説得力が増す</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉘</div>
-    <div class="scene-title">ポートフォリオ用の実績まとめを作る</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下の実績をポートフォリオ向けに整理してください。
-
-{{実績}}</pre>
-    </div>
-    <p class="tip-note">ジャンルごとに分類する</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉙</div>
-    <div class="scene-title">SNS集客用の自己紹介文を作る</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>以下のプロフィールから
+{{実績}}</pre></div><p class="tip-note">ジャンルごとに分類する</p></div>
+<div class="scene-card"><div class="scene-num">㉘</div><div class="scene-title">SNS集客用の自己紹介文を作る</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下のプロフィールから
 X用の自己紹介文を作成してください。
 
-{{プロフィール}}</pre>
-    </div>
-    <p class="tip-note">実績と発信テーマを入れる</p>
-  </div>
-
-  <div class="scene-card">
-    <div class="scene-num">㉚</div>
-    <div class="scene-title">専門ジャンルの知識をインプットする</div>
-    <div class="prompt-box">
-      <div class="prompt-label">📋 プロンプト</div>
-      <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
-      <pre>テーマ：
+{{プロフィール}}</pre></div><p class="tip-note">実績と発信テーマを入れる</p></div>
+<div class="scene-card"><div class="scene-num">㉙</div><div class="scene-title">専門ジャンルの知識をインプットする</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>テーマ：
 {{テーマ}}
 
 初心者向けに体系的に解説してください。
@@ -568,46 +233,48 @@ X用の自己紹介文を作成してください。
 ・基礎知識
 ・重要用語
 ・業界動向
-・よくある質問</pre>
-    </div>
-    <p class="tip-note">新ジャンル受注前の学習に使う</p>
-  </div>
+・よくある質問</pre></div><p class="tip-note">新ジャンル受注前の学習に使う</p></div>
+<div class="scene-card"><div class="scene-num">㉚</div><div class="scene-title">文字単価交渉の根拠を作る</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+<pre>以下の実績をもとに
+単価アップの根拠を整理してください。
 
-  <!-- まとめ -->
-  <h2>まとめ</h2>
-  <div class="summary-box">
-    <div class="summary-title">この記事のまとめ</div>
-    <ul>
-      <li>企画・執筆・営業・効率化の4カテゴリで計30プロンプトをコピペして使える</li>
-      <li>構成案・リード文・まとめ文はChatGPTに任せて執筆に集中できる</li>
-      <li>クライアント対応メールも自動生成で時間を大幅に節約できる</li>
-    </ul>
-  </div>
-  <p>今回紹介した30個のプロンプトを活用すれば、執筆スピードの向上だけでなく、案件獲得や単価アップにもつなげられます。まずは気になるプロンプトから試し、自分専用のテンプレートへ育てていくことがおすすめです。</p>
+{{実績}}</pre></div><p class="tip-note">数字が多いほど説得力が増す</p></div>
 
-  <div class="cta-block">
-    <p>より高精度な長文生成・複雑な指示にはPro版が最適です。AIライターとしてのスキルアップにはスクールも選択肢のひとつです。</p>
-    <div class="btn-row">
-      <a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BWVTE" class="btn-secondary" rel="nofollow">▶ AIスキルを学ぶ【Fast Campus】</a>
-<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BWVTE" alt="">
-      <a href="[DMM_AFFILIATE_LINK]" class="btn-secondary">▶ DMM 生成AI CAMPを見る</a>
-    </div>
-  </div>
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>企画・執筆・クライアント対応・効率化の4カテゴリで計30プロンプトを収録</li>
+<li>構成案・リード文・まとめ文はChatGPTに任せて執筆に集中できる</li>
+<li>クライアント対応メールも自動生成で時間を大幅に節約できる</li>
+</ul></div>
+<div class="cta-block"><p>より高精度な記事生成・文章品質向上には以下がおすすめです。</p>
+<div class="btn-row">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+APTO2+3Q2O+HVFKY" class="btn-secondary" rel="nofollow">▶ 文章作成アドバイスツール【文賢】</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B5MC5+APTO2+3Q2O+HVFKY" alt="">
+</div></div>
 </div>
-
-<footer>
-  <p>© 2026 プロンプトラボ. All rights reserved.</p>
-</footer>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
 
 <script>
 function copyPrompt(btn) {
-  const pre = btn.parentElement.querySelector('pre');
-  navigator.clipboard.writeText(pre.innerText).then(() => {
-    btn.textContent = 'コピーしました！';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
-  });
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
 }
 </script>
+
 </body>
 </html>
