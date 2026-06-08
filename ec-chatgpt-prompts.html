@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【EC運営】が使うChatGPTプロンプト12選【コピペOK】| プロンプトラボ</title>
+  <meta name="description" content="商品説明文・レビュー返信・メルマガ・広告文・在庫切れ案内などEC担当者向けChatGPTプロンプト12選を無料公開。">
+  <meta property="og:title" content="【EC運営】が使うChatGPTプロンプト12選【コピペOK】">
+  <meta property="og:type" content="article">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.6rem 0 .5rem; }
+    p { margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    li { margin-bottom: .4rem; line-height: 1.7; }
+    strong { color: #e0e0f8; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .related-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 10px; padding: 1rem 1.2rem; margin: 1.5rem 0; }
+    .related-title { font-size: .78rem; font-weight: 700; color: #a78bfa; margin-bottom: .5rem; }
+    .related-box ul { margin: 0; padding-left: 1.2rem; }
+    .related-box li { font-size: .85rem; margin-bottom: .3rem; }
+    .related-box a { color: #a78bfa; text-decoration: none; }
+    .related-box a:hover { text-decoration: underline; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
+  <div class="nav-links">
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
+  </div>
+</nav>
+<div class="container">
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">職種別</a> › EC運営向けChatGPTプロンプト</div>
+<span class="article-label">職種別 / EC</span>
+<h1>【EC運営】が使う<br>ChatGPTプロンプト12選【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">EC運営の書類作成・記録業務、ChatGPTで半分にできます。<br><br>
+商品説明文・レビュー返信・メルマガ・広告文など多くの文章業務が発生するEC現場。<strong>商品数が増えるほど大きくなる文章作成の負担</strong>をChatGPTで解決します。</div>
+
+<h2>ChatGPTで業務効率化できる3つの理由</h2>
+<div class="merit-grid"><div class="merit-card"><div class="merit-icon">🛒</div><div class="merit-title">商品ページ作成を高速化</div><div class="merit-desc">商品特徴を入力するだけで魅力的な説明文を短時間で作成できる。</div></div><div class="merit-card"><div class="merit-icon">📣</div><div class="merit-title">マーケティング施策を効率化</div><div class="merit-desc">メルマガ・広告文・SNS投稿を複数パターン一度に生成できる。</div></div><div class="merit-card"><div class="merit-icon">⭐</div><div class="merit-title">顧客対応の品質を向上</div><div class="merit-desc">レビュー返信や問い合わせ対応を丁寧かつ一貫性のある形で行いやすくなる。</div></div></div>
+
+<h2>EC運営向けプロンプト集（12個）</h2>
+<div class="scene-card"><div class="scene-num">01</div><div class="scene-title">商品説明文作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品情報をもとにECサイト向けの商品説明文を作成してください。
+
+商品名：{{商品名}}
+カテゴリ：{{カテゴリ}}
+特徴：{{特徴}}
+ターゲット：{{ターゲット}}
+
+商品のメリットが伝わる文章を300文字程度で作成してください。</pre></div><p class="tip-note">スペックだけでなく利用シーンも入力する</p></div><div class="scene-card"><div class="scene-num">02</div><div class="scene-title">レビュー返信作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下のレビューに対する返信文を作成してください。
+
+レビュー評価：{{評価}}
+レビュー内容：{{レビュー内容}}
+
+感謝を伝えながら丁寧に返信してください。</pre></div><p class="tip-note">高評価と低評価で文面を調整する</p></div><div class="scene-card"><div class="scene-num">03</div><div class="scene-title">クレームレビュー返信</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の低評価レビューへの返信文を作成してください。
+
+商品名：{{商品名}}
+レビュー内容：{{レビュー内容}}
+
+誠実な謝罪と改善姿勢を伝えてください。</pre></div><p class="tip-note">言い訳ではなく改善策を伝える</p></div><div class="scene-card"><div class="scene-num">04</div><div class="scene-title">メルマガ作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容をもとに販促メルマガを作成してください。
+
+キャンペーン内容：{{キャンペーン内容}}
+対象商品：{{対象商品}}
+配信対象：{{配信対象}}
+
+開封率とクリック率を意識してください。</pre></div><p class="tip-note">件名案も複数生成させる</p></div><div class="scene-card"><div class="scene-num">05</div><div class="scene-title">セール告知文</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>セール告知文を作成してください。
+
+セール名：{{セール名}}
+割引率：{{割引率}}
+期間：{{期間}}
+対象商品：{{対象商品}}
+
+購買意欲を高める文章にしてください。</pre></div><p class="tip-note">期間限定感を強調する</p></div><div class="scene-card"><div class="scene-num">06</div><div class="scene-title">Google広告文</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品情報をもとにGoogle広告の見出しと説明文を作成してください。
+
+商品名：{{商品名}}
+特徴：{{特徴}}
+強み：{{強み}}
+
+複数パターン作成してください。</pre></div><p class="tip-note">競合との差別化ポイントを入力する</p></div><div class="scene-card"><div class="scene-num">07</div><div class="scene-title">SNS投稿文作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品を紹介するSNS投稿文を作成してください。
+
+商品名：{{商品名}}
+特徴：{{特徴}}
+ターゲット：{{ターゲット}}
+
+XとInstagram向けに作成してください。</pre></div><p class="tip-note">媒体ごとに文体を変える</p></div><div class="scene-card"><div class="scene-num">08</div><div class="scene-title">商品比較表作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品を比較してください。
+
+商品A：{{商品A}}
+商品B：{{商品B}}
+商品C：{{商品C}}
+
+価格、機能、特徴を表形式で整理してください。</pre></div><p class="tip-note">購入判断しやすい比較項目を追加する</p></div><div class="scene-card"><div class="scene-num">09</div><div class="scene-title">在庫切れ案内文</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品について在庫切れ案内文を作成してください。
+
+商品名：{{商品名}}
+再入荷予定：{{再入荷予定}}
+
+顧客が離脱しない文章にしてください。</pre></div><p class="tip-note">再入荷通知登録も案内する</p></div><div class="scene-card"><div class="scene-num">10</div><div class="scene-title">再入荷案内メール</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品が再入荷したことを知らせるメールを作成してください。
+
+商品名：{{商品名}}
+特徴：{{特徴}}
+
+購入を促す内容にしてください。</pre></div><p class="tip-note">数量限定の場合は明記する</p></div><div class="scene-card"><div class="scene-num">11</div><div class="scene-title">アップセル提案文</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品購入者向けにアップセル提案文を作成してください。
+
+購入商品：{{購入商品}}
+関連商品：{{関連商品}}
+
+自然な提案文にしてください。</pre></div><p class="tip-note">セット利用のメリットを伝える</p></div><div class="scene-card"><div class="scene-num">12</div><div class="scene-title">商品LP構成作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商品情報をもとにLP構成案を作成してください。
+
+商品名：{{商品名}}
+ターゲット：{{ターゲット}}
+特徴：{{特徴}}
+強み：{{強み}}
+
+購入率向上を意識した構成にしてください。</pre></div><p class="tip-note">ベネフィットを中心に入力する</p></div>
+
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>商品説明文・レビュー返信・広告文・メルマガなど12種のプロンプトをコピペして使える</li>
+<li>商品数が増えても文章作成の負担を増やさずに対応できる</li>
+<li>売上分析や商品企画など重要な業務へ時間を使えるようになる</li>
+</ul></div>
+<div class="related-box"><div class="related-title">📌 関連記事</div><ul><li><a href="/sns-post-prompts.html">SNS投稿文をAIで量産するプロンプト【X・Instagram対応】</a></li><li><a href="/ai-writer-prompts.html">AI副業ライターが使うChatGPTプロンプト30選</a></li></ul></div>
+<div class="cta-block"><p>AIスキルをさらに高めてEC業務の効率化を加速させましょう。</p>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt=""></div>
+</div>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
+<script>
+function copyPrompt(btn) {
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+</body>
+</html>

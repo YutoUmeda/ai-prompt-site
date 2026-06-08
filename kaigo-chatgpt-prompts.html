@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【介護士】が使うChatGPTプロンプト12選【コピペOK】| プロンプトラボ</title>
+  <meta name="description" content="介護記録・申し送り・ケアプラン・家族報告・ヒヤリハット報告書など介護士向けChatGPTプロンプト12選を無料公開。">
+  <meta property="og:title" content="【介護士】が使うChatGPTプロンプト12選【コピペOK】">
+  <meta property="og:type" content="article">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.6rem 0 .5rem; }
+    p { margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    li { margin-bottom: .4rem; line-height: 1.7; }
+    strong { color: #e0e0f8; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .related-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 10px; padding: 1rem 1.2rem; margin: 1.5rem 0; }
+    .related-title { font-size: .78rem; font-weight: 700; color: #a78bfa; margin-bottom: .5rem; }
+    .related-box ul { margin: 0; padding-left: 1.2rem; }
+    .related-box li { font-size: .85rem; margin-bottom: .3rem; }
+    .related-box a { color: #a78bfa; text-decoration: none; }
+    .related-box a:hover { text-decoration: underline; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
+  <div class="nav-links">
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
+  </div>
+</nav>
+<div class="container">
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">職種別</a> › 介護士向けChatGPTプロンプト</div>
+<span class="article-label">職種別 / 介護</span>
+<h1>【介護士】が使う<br>ChatGPTプロンプト12選【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">介護士の書類作成・記録業務、ChatGPTで半分にできます。<br><br>
+介護現場では利用者対応のほかに、介護記録・申し送り・ケアプラン・家族への報告など多くの事務作業が発生します。<strong>記録業務に追われて利用者と向き合う時間が削られている</strong>という課題をChatGPTで解決します。</div>
+
+<h2>ChatGPTで業務効率化できる3つの理由</h2>
+<div class="merit-grid"><div class="merit-card"><div class="merit-icon">⏱️</div><div class="merit-title">記録作成時間を短縮</div><div class="merit-desc">利用者の状態や対応内容を入力するだけで記録文の下書きを作成できる。</div></div><div class="merit-card"><div class="merit-icon">📐</div><div class="merit-title">文章品質を統一</div><div class="merit-desc">職員ごとの記録のばらつきをなくし施設全体の品質を向上できる。</div></div><div class="merit-card"><div class="merit-icon">✅</div><div class="merit-title">申し送り・報告を効率化</div><div class="merit-desc">要点整理を自動化することで伝達漏れや記載ミスの防止につながる。</div></div></div>
+
+<h2>介護士向けプロンプト集（12個）</h2>
+<div class="scene-card"><div class="scene-num">01</div><div class="scene-title">介護記録作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容から介護記録を作成してください。
+
+利用者名：{{利用者名}}
+日時：{{日時}}
+利用者の状態：{{状態}}
+実施した介助：{{介助内容}}
+特記事項：{{特記事項}}
+
+介護記録として客観的かつ簡潔な文章にまとめてください。</pre></div><p class="tip-note">主観ではなく事実ベースで入力する</p></div><div class="scene-card"><div class="scene-num">02</div><div class="scene-title">申し送り文作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容を次シフト向けの申し送り事項として整理してください。
+
+{{申し送り内容}}
+
+重要事項を優先して箇条書きにしてください。</pre></div><p class="tip-note">緊急性の高い情報を必ず含める</p></div><div class="scene-card"><div class="scene-num">03</div><div class="scene-title">ケアプラン案作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>利用者情報をもとにケアプラン案を作成してください。
+
+年齢：{{年齢}}
+要介護度：{{要介護度}}
+身体状況：{{身体状況}}
+課題：{{課題}}
+本人希望：{{本人希望}}
+
+短期目標・長期目標・支援内容を整理してください。</pre></div><p class="tip-note">課題を具体的に入力する</p></div><div class="scene-card"><div class="scene-num">04</div><div class="scene-title">家族への報告文</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容を利用者家族向けの報告文にしてください。
+
+{{利用者の様子}}
+
+安心感を与える丁寧な文章で作成してください。</pre></div><p class="tip-note">専門用語は避ける</p></div><div class="scene-card"><div class="scene-num">05</div><div class="scene-title">ヒヤリハット報告書</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容からヒヤリハット報告書を作成してください。
+
+発生日時：{{日時}}
+発生場所：{{場所}}
+状況：{{状況}}
+原因：{{原因}}
+対応：{{対応}}
+
+再発防止策も提案してください。</pre></div><p class="tip-note">発生状況を時系列で入力する</p></div><div class="scene-card"><div class="scene-num">06</div><div class="scene-title">事故報告書作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容から事故報告書を作成してください。
+
+事故内容：{{事故内容}}
+利用者状況：{{利用者状況}}
+対応内容：{{対応内容}}
+
+報告書形式でまとめてください。</pre></div><p class="tip-note">推測ではなく確認済み情報を入力する</p></div><div class="scene-card"><div class="scene-num">07</div><div class="scene-title">モニタリング記録作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の観察内容からモニタリング記録を作成してください。
+
+{{観察内容}}</pre></div><p class="tip-note">変化した点を明確に記載する</p></div><div class="scene-card"><div class="scene-num">08</div><div class="scene-title">サービス担当者会議の要約</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の会議内容を要約してください。
+
+{{会議内容}}
+
+決定事項と今後の対応を整理してください。</pre></div><p class="tip-note">議事録をそのまま貼り付ける</p></div><div class="scene-card"><div class="scene-num">09</div><div class="scene-title">食事介助記録</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容を介護記録形式にしてください。
+
+食事量：{{食事量}}
+水分摂取量：{{水分量}}
+様子：{{様子}}</pre></div><p class="tip-note">数値情報を具体的に入力する</p></div><div class="scene-card"><div class="scene-num">10</div><div class="scene-title">入浴介助記録</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容から入浴介助記録を作成してください。
+
+利用者状況：{{状況}}
+皮膚状態：{{皮膚状態}}
+特記事項：{{特記事項}}</pre></div><p class="tip-note">観察事項を漏れなく入力する</p></div><div class="scene-card"><div class="scene-num">11</div><div class="scene-title">夜勤報告書</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>夜勤中の出来事を報告書形式でまとめてください。
+
+{{夜勤内容}}
+
+利用者ごとの状況も整理してください。</pre></div><p class="tip-note">時間帯ごとにまとめて入力する</p></div><div class="scene-card"><div class="scene-num">12</div><div class="scene-title">連絡ノート作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容を職員向け連絡ノートとして整理してください。
+
+{{内容}}
+
+簡潔かつ分かりやすくまとめてください。</pre></div><p class="tip-note">1件ごとに情報を区切る</p></div>
+
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>介護記録・申し送り・ケアプランなど12種のプロンプトをコピペして使える</li>
+<li>{{変数名}} を書き換えるだけで即使用可能</li>
+<li>文章作成時間を短縮して利用者と向き合う時間を増やせる</li>
+</ul></div>
+<div class="related-box"><div class="related-title">📌 関連記事</div><ul><li><a href="/meeting-minutes-prompts.html">議事録を自動要約するClaude・ChatGPTプロンプト集</a></li><li><a href="/business-email-prompts.html">ビジネスメールを10秒で書くChatGPTプロンプト20選</a></li></ul></div>
+<div class="cta-block"><p>AIスキルをさらに高めて業務効率化を加速させましょう。</p>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt=""></div>
+</div>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
+<script>
+function copyPrompt(btn) {
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+</body>
+</html>

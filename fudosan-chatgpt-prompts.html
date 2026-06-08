@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【不動産営業】が使うChatGPTプロンプト12選【コピペOK】| プロンプトラボ</title>
+  <meta name="description" content="物件紹介文・内見案内メール・比較表・契約書チェックなど不動産営業向けChatGPTプロンプト12選を無料公開。">
+  <meta property="og:title" content="【不動産営業】が使うChatGPTプロンプト12選【コピペOK】">
+  <meta property="og:type" content="article">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .article-label { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); padding: .25rem .7rem; border-radius: 20px; margin-bottom: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.02em; margin-bottom: 1rem; color: #f0f0fa; }
+    .article-meta { font-size: .8rem; color: #50508c; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e1e2e; }
+    .lead { font-size: 1rem; color: #b0b0d0; line-height: 1.9; margin-bottom: 2rem; padding: 1.2rem 1.4rem; background: #16161e; border-left: 3px solid #a78bfa; border-radius: 0 8px 8px 0; }
+    h2 { font-size: 1.2rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    h3 { font-size: 1rem; font-weight: 600; color: #c0c0e0; margin: 1.6rem 0 .5rem; }
+    p { margin-bottom: 1rem; color: #c0c0d8; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; color: #c0c0d8; }
+    li { margin-bottom: .4rem; line-height: 1.7; }
+    strong { color: #e0e0f8; }
+    .merit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+    .merit-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem; }
+    .merit-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .merit-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .merit-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+    .scene-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .scene-num { display: inline-block; font-size: .72rem; font-weight: 700; background: rgba(167,139,250,.15); color: #a78bfa; border-radius: 4px; padding: .15rem .5rem; margin-bottom: .5rem; }
+    .scene-title { font-size: .95rem; font-weight: 600; color: #e0e0f8; margin-bottom: .6rem; }
+    .prompt-box { background: #0f0f13; border: 1px solid #2e2e3e; border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0 .4rem; position: relative; }
+    .prompt-label { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .5rem; }
+    pre { font-family: "SF Mono","Fira Code",monospace; font-size: .82rem; color: #d0d0f0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; margin: 0; }
+    .copy-btn { position: absolute; top: .7rem; right: .7rem; font-size: .72rem; padding: .3rem .7rem; background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3); border-radius: 6px; color: #a78bfa; cursor: pointer; }
+    .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+    .tip-note { font-size: .82rem; color: #70708c; margin: .4rem 0 0; }
+    .tip-note::before { content: "💡 "; }
+    .related-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 10px; padding: 1rem 1.2rem; margin: 1.5rem 0; }
+    .related-title { font-size: .78rem; font-weight: 700; color: #a78bfa; margin-bottom: .5rem; }
+    .related-box ul { margin: 0; padding-left: 1.2rem; }
+    .related-box li { font-size: .85rem; margin-bottom: .3rem; }
+    .related-box a { color: #a78bfa; text-decoration: none; }
+    .related-box a:hover { text-decoration: underline; }
+    .summary-box { background: #16161e; border: 1px solid #2e2e42; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; }
+    .summary-title { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .cta-block { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.3); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block p { font-size: .9rem; color: #9090b0; margin-bottom: 1rem; }
+    .btn-primary { display: inline-block; padding: .7rem 1.6rem; background: #7c3aed; color: #fff; font-size: .88rem; font-weight: 600; border-radius: 8px; text-decoration: none; }
+    .btn-primary:hover { background: #6d28d9; }
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">⚡ プロンプトラボ</a>
+  <div class="nav-links">
+    <a href="/">職種別</a><a href="/">用途別</a><a href="/">副業</a><a href="/">無料PDF</a>
+  </div>
+</nav>
+<div class="container">
+<div class="breadcrumb"><a href="/">トップ</a> › <a href="/">職種別</a> › 不動産営業向けChatGPTプロンプト</div>
+<span class="article-label">職種別 / 不動産</span>
+<h1>【不動産営業】が使う<br>ChatGPTプロンプト12選【コピペOK】</h1>
+<div class="article-meta">2026年6月 更新 ｜ 読了時間: 約6分</div>
+<div class="lead">不動産営業の書類作成・記録業務、ChatGPTで半分にできます。<br><br>
+物件紹介文・メール対応・提案資料・商談メモなど多くのデスクワークが発生する不動産営業。<strong>問い合わせ対応のスピードが成約率を左右する</strong>現場でChatGPTを活用する方法を解説します。</div>
+
+<h2>ChatGPTで業務効率化できる3つの理由</h2>
+<div class="merit-grid"><div class="merit-card"><div class="merit-icon">⚡</div><div class="merit-title">顧客対応スピードを上げられる</div><div class="merit-desc">顧客ごとにカスタマイズしたメールを短時間で作成できる。返信速度向上で商談機会の損失を防げる。</div></div><div class="merit-card"><div class="merit-icon">📊</div><div class="merit-title">提案資料作成を効率化</div><div class="merit-desc">物件比較表や紹介文のたたき台を入力情報から自動生成できる。</div></div><div class="merit-card"><div class="merit-icon">📐</div><div class="merit-title">営業品質を標準化</div><div class="merit-desc">経験による品質差をなくし安定した営業活動ができる。</div></div></div>
+
+<h2>不動産営業向けプロンプト集（12個）</h2>
+<div class="scene-card"><div class="scene-num">01</div><div class="scene-title">物件紹介文作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の物件情報をもとに魅力的な物件紹介文を作成してください。
+
+物件名：{{物件名}}
+所在地：{{所在地}}
+間取り：{{間取り}}
+価格：{{価格}}
+最寄駅：{{最寄駅}}
+特徴：{{特徴}}
+
+ポータルサイト掲載向けに300文字程度で作成してください。</pre></div><p class="tip-note">設備や立地の強みを具体的に入力する</p></div><div class="scene-card"><div class="scene-num">02</div><div class="scene-title">内見案内メール</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>顧客へ送る内見案内メールを作成してください。
+
+顧客名：{{顧客名}}
+物件名：{{物件名}}
+日時：{{日時}}
+集合場所：{{集合場所}}
+
+丁寧で親しみやすい文章にしてください。</pre></div><p class="tip-note">集合方法も記載する</p></div><div class="scene-card"><div class="scene-num">03</div><div class="scene-title">内見後フォローメール</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>内見後のお礼メールを作成してください。
+
+顧客名：{{顧客名}}
+内見物件：{{物件名}}
+顧客の反応：{{反応}}
+
+検討を後押しする内容を含めてください。</pre></div><p class="tip-note">顧客が気にしていた点を追記する</p></div><div class="scene-card"><div class="scene-num">04</div><div class="scene-title">物件比較表作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の物件を比較してください。
+
+物件A：{{物件A}}
+物件B：{{物件B}}
+物件C：{{物件C}}
+
+価格、立地、広さ、設備を表形式で整理してください。</pre></div><p class="tip-note">比較項目を増やすと提案力が高まる</p></div><div class="scene-card"><div class="scene-num">05</div><div class="scene-title">契約書チェック補助</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の契約書内容について顧客が確認すべきポイントを抽出してください。
+
+{{契約書内容}}
+
+専門用語は分かりやすく説明してください。</pre></div><p class="tip-note">必ず人間が最終確認する</p></div><div class="scene-card"><div class="scene-num">06</div><div class="scene-title">顧客ヒアリング項目作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の顧客情報からヒアリング項目を作成してください。
+
+年齢：{{年齢}}
+家族構成：{{家族構成}}
+予算：{{予算}}
+希望エリア：{{エリア}}
+
+優先順位を整理してください。</pre></div><p class="tip-note">事前準備に活用する</p></div><div class="scene-card"><div class="scene-num">07</div><div class="scene-title">価格交渉メール</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の内容をもとに価格交渉メールを作成してください。
+
+物件名：{{物件名}}
+希望価格：{{希望価格}}
+理由：{{理由}}
+
+丁寧かつ誠実な文章にしてください。</pre></div><p class="tip-note">客観的な理由を添える</p></div><div class="scene-card"><div class="scene-num">08</div><div class="scene-title">営業トーク作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の物件を紹介する営業トークを作成してください。
+
+{{物件情報}}
+
+3分程度で説明できる内容にしてください。</pre></div><p class="tip-note">ターゲット層も入力する</p></div><div class="scene-card"><div class="scene-num">09</div><div class="scene-title">ローン説明文作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>住宅ローンについて初心者向けに説明してください。
+
+借入額：{{借入額}}
+年収：{{年収}}
+返済期間：{{返済期間}}
+
+分かりやすい文章でまとめてください。</pre></div><p class="tip-note">専門用語を避けるよう指定する</p></div><div class="scene-card"><div class="scene-num">10</div><div class="scene-title">提案資料の構成作成</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の物件提案資料の構成案を作成してください。
+
+顧客属性：{{顧客属性}}
+提案物件：{{提案物件}}
+
+成約率向上を意識した構成にしてください。</pre></div><p class="tip-note">競合物件との比較も含める</p></div><div class="scene-card"><div class="scene-num">11</div><div class="scene-title">紹介依頼メール</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>既存顧客向けの紹介依頼メールを作成してください。
+
+顧客名：{{顧客名}}
+
+紹介しやすい内容にしてください。</pre></div><p class="tip-note">特典があれば記載する</p></div><div class="scene-card"><div class="scene-num">12</div><div class="scene-title">商談内容の要約</div><div class="prompt-box"><div class="prompt-label">📋 プロンプト</div><button class="copy-btn" onclick="copyPrompt(this)">コピー</button><pre>以下の商談内容を要約してください。
+
+{{商談メモ}}
+
+顧客ニーズと次回アクションを整理してください。</pre></div><p class="tip-note">商談直後に入力する</p></div>
+
+<h2>まとめ</h2>
+<div class="summary-box"><div class="summary-title">この記事のまとめ</div><ul>
+<li>物件紹介文・フォローメール・比較表・商談要約など12種のプロンプトをコピペして使える</li>
+<li>問い合わせ対応のスピードを上げて成約率向上につなげられる</li>
+<li>営業トークや提案資料のたたき台作成も効率化できる</li>
+</ul></div>
+<div class="related-box"><div class="related-title">📌 関連記事</div><ul><li><a href="/business-email-prompts.html">ビジネスメールを10秒で書くChatGPTプロンプト20選</a></li><li><a href="/english-email-prompts.html">英語メールをChatGPTで自然に書くプロンプト15選</a></li></ul></div>
+<div class="cta-block"><p>AIスキルをさらに高めて営業効率を最大化しましょう。</p>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" class="btn-primary" rel="nofollow">▶ AIスキルを磨く【Fast Campus】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B5MC5+8XIUQ+5Q4A+BX3J6" alt=""></div>
+</div>
+<footer><p>© 2026 プロンプトラボ. All rights reserved.</p></footer>
+<script>
+function copyPrompt(btn) {
+  var pre = btn.parentElement.querySelector('pre');
+  var text = pre.innerText;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){ showCopied(btn); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied(btn);
+  }
+}
+function showCopied(btn) {
+  btn.textContent = 'コピーしました！'; btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+</body>
+</html>
