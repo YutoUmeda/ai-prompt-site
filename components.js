@@ -11,7 +11,7 @@
 
   // ===== フッター =====
   var FOOTER_HTML = `
-    <p>© 2026 ぽけっとプロンプト by <a href="/about.html" style="color:#70708c;text-decoration:none">nuts</a>. All rights reserved.
+    <p>© 2026 ぽけっとプロンプト by <a href="/about.html" style="color:#70708c;text-decoration:none">Nuts</a>. All rights reserved.
     &nbsp;｜&nbsp;<a href="/about.html" style="color:#70708c;text-decoration:none">運営者情報</a></p>`;
 
   // ===== 置き換え処理 =====
