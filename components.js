@@ -3,16 +3,16 @@
   var NAV_HTML = `
     <a href="/" class="logo">🎒 ぽけっとプロンプト</a>
     <div class="nav-links">
-      <a href="/#categories">職種別</a>
-      <a href="/#categories">用途別</a>
-      <a href="/#categories">副業</a>
+      <a href="/shokushu.html">職種別</a>
+      <a href="/yoto.html">用途別</a>
+      <a href="/ai-writer-prompts.html">副業</a>
       <a href="/#free-pdf">無料PDF</a>
     </div>`;
 
   // ===== フッター =====
   var FOOTER_HTML = `
-    <p>© 2026 ぽけっとプロンプト by <a href="/about.html" style="color:#70708c;text-decoration:none">Nuts</a>. All rights reserved.
-    &nbsp;｜&nbsp;<a href="/about.html" style="color:#70708c;text-decoration:none">運営者情報</a></p>`;
+    <p>© 2026 ぽけっとプロンプト by <a href="/about.html">nuts</a>
+    &nbsp;｜&nbsp;<a href="/about.html">運営者情報</a></p>`;
 
   // ===== 置き換え処理 =====
   document.addEventListener('DOMContentLoaded', function () {
