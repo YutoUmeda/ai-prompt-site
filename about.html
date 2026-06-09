@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運営者情報 | ぽけっとプロンプト</title>
+  <meta name="description" content="ぽけっとプロンプトの運営者情報。Webビジネス支援・業務効率化を専門とするnuts（ナッツ）が運営するAIプロンプト集サイトです。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #0f0f13; color: #e8e8f0; line-height: 1.8; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(15,15,19,.94); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 1rem; font-weight: 700; color: #a78bfa; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: #9090b0; text-decoration: none; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .breadcrumb { font-size: .78rem; color: #50508c; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #7070b0; text-decoration: none; }
+    .breadcrumb a:hover { color: #a78bfa; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.3; margin-bottom: 2rem; color: #f0f0fa; }
+    h2 { font-size: 1.1rem; font-weight: 700; color: #f0f0fa; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e1e2e; }
+    p { margin-bottom: 1rem; color: #c0c0d8; line-height: 1.8; }
+
+    /* プロフィールカード */
+    .profile-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+    .profile-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+    .profile-info { flex: 1; }
+    .profile-name { font-size: 1.3rem; font-weight: 800; color: #f0f0fa; margin-bottom: .2rem; }
+    .profile-handle { font-size: .85rem; color: #a78bfa; margin-bottom: .8rem; }
+    .profile-bio { font-size: .9rem; color: #9090b0; line-height: 1.7; margin: 0; }
+    .tag-row { display: flex; gap: .5rem; flex-wrap: wrap; margin: .8rem 0 0; }
+    .tag { font-size: .72rem; font-weight: 600; padding: .2rem .7rem; border-radius: 20px; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); color: #a78bfa; }
+
+    /* 実績・スキル */
+    .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .skill-card { background: #16161e; border: 1px solid #1e1e2e; border-radius: 10px; padding: 1rem 1.2rem; }
+    .skill-icon { font-size: 1.4rem; margin-bottom: .4rem; }
+    .skill-title { font-size: .9rem; font-weight: 600; color: #e0e0f8; margin-bottom: .3rem; }
+    .skill-desc { font-size: .8rem; color: #70708c; line-height: 1.6; }
+
+    /* 会社情報 */
+    .info-table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 1rem 0; }
+    .info-table tr { border-bottom: 1px solid #1e1e2e; }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table th { padding: .8rem 1rem .8rem 0; text-align: left; color: #70708c; font-weight: 500; width: 130px; vertical-align: top; }
+    .info-table td { padding: .8rem 0; color: #c0c0d8; }
+
+    /* ミッション */
+    .mission-box { background: linear-gradient(135deg, #1a1025 0%, #16161e 100%); border: 1px solid rgba(167,139,250,.25); border-radius: 14px; padding: 1.6rem 1.8rem; margin: 1.5rem 0; }
+    .mission-label { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #a78bfa; margin-bottom: .6rem; }
+    .mission-text { font-size: 1.1rem; font-weight: 600; color: #e8e8f0; line-height: 1.6; margin: 0; }
+
+    /* サイトについて */
+    .site-box { background: #16161e; border: 1px solid #1e1e2e; border-radius: 12px; padding: 1.4rem 1.6rem; margin: 1rem 0; }
+
+    footer { border-top: 1px solid #1e1e2e; padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: #40405c; }
+
+    @media (max-width: 520px) {
+      .profile-card { flex-direction: column; align-items: center; text-align: center; }
+      .tag-row { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">🎒 ぽけっとプロンプト</a>
+  <div class="nav-links">
+    <a href="/">トップ</a>
+    <a href="/#categories">記事一覧</a>
+    <a href="/#free-pdf">無料PDF</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">トップ</a> › 運営者情報</div>
+
+  <h1>運営者情報</h1>
+
+  <!-- プロフィール -->
+  <div class="profile-card">
+    <div class="profile-icon">🌰</div>
+    <div class="profile-info">
+      <div class="profile-name">nuts（ナッツ）</div>
+      <div class="profile-handle">@nuts72 / ぽけっとプロンプト 運営者</div>
+      <p class="profile-bio">Webビジネス支援・業務効率化を専門とするWebコンサルタント。「複雑なWebの世界を、もっと分かりやすく」をモットーに、中小企業・個人事業主のビジネス成長をサポートしています。生成AIの業務活用に特化したプロンプト集サイト「ぽけっとプロンプト」を運営中。</p>
+      <div class="tag-row">
+        <span class="tag">Webコンサルタント</span>
+        <span class="tag">業務効率化</span>
+        <span class="tag">生成AI活用</span>
+        <span class="tag">ビジネス支援</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ミッション -->
+  <div class="mission-box">
+    <div class="mission-label">Mission</div>
+    <p class="mission-text">「複雑なWebの世界を、もっと分かりやすく」<br>専門知識がなくても、AIをすぐに仕事で使える状態にする。</p>
+  </div>
+
+  <!-- 専門分野 -->
+  <h2>専門分野</h2>
+  <div class="skill-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">生成AI活用支援</div>
+      <div class="skill-desc">ChatGPT・Claude等を使った業務効率化・プロンプト設計を支援。</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-title">Webコンサルティング</div>
+      <div class="skill-desc">Webを活用したビジネス成長戦略の立案・実行をサポート。</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-title">業務効率化</div>
+      <div class="skill-desc">中小企業・個人事業主の業務プロセス改善・自動化を支援。</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">デジタルマーケティング</div>
+      <div class="skill-desc">SEO・SNS・コンテンツマーケティングによる集客支援。</div>
+    </div>
+  </div>
+
+  <!-- サイトについて -->
+  <h2>このサイトについて</h2>
+  <div class="site-box">
+    <p>「ぽけっとプロンプト」は、仕事でAIをすぐに使いたいけれど何を入力すればいいか分からないという方のために立ち上げたプロンプト集サイトです。</p>
+    <p>ビジネスメール・議事録・SNS投稿・副業・職種別など、実務に直結するプロンプトをコピペできる形で無料公開しています。「ポケットから取り出してすぐ使える」をコンセプトに、随時コンテンツを追加しています。</p>
+    <p style="margin:0">掲載しているプロンプトはすべて実際の業務を想定して設計していますが、AI出力には必ず人間によるチェックを行うことを推奨しています。</p>
+  </div>
+
+  <!-- 運営情報 -->
+  <h2>運営情報</h2>
+  <table class="info-table">
+    <tr>
+      <th>サイト名</th>
+      <td>ぽけっとプロンプト</td>
+    </tr>
+    <tr>
+      <th>URL</th>
+      <td>https://prompt.nuts72.com</td>
+    </tr>
+    <tr>
+      <th>運営者</th>
+      <td>nuts（ナッツ）</td>
+    </tr>
+    <tr>
+      <th>専門分野</th>
+      <td>Webコンサルティング・生成AI活用支援・業務効率化</td>
+    </tr>
+    <tr>
+      <th>運営開始</th>
+      <td>2026年6月</td>
+    </tr>
+    <tr>
+      <th>お問い合わせ</th>
+      <td>サイト内のフォームよりご連絡ください</td>
+    </tr>
+  </table>
+
+  <!-- 免責事項 -->
+  <h2>免責事項</h2>
+  <p>当サイトで紹介しているプロンプトおよびAI出力結果の利用により生じたいかなる損害についても、運営者は責任を負いかねます。AIの出力内容は必ず人間が確認・修正した上でご利用ください。</p>
+  <p>当サイトには広告・アフィリエイトリンクが含まれています。リンク経由での商品・サービスのご購入により、当サイトが収益を得る場合があります。</p>
+
+</div>
+
+<footer>
+  <p>© 2026 ぽけっとプロンプト. All rights reserved.</p>
+</footer>
+
+<script src="/components.js"></script>
+</body>
+</html>
