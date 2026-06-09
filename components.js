@@ -11,7 +11,7 @@
 
   // ===== フッター =====
   var FOOTER_HTML = `
-    <p>© 2026 ぽけっとプロンプト by <a href="/about.html">nuts</a>
+    <p>© 2026 ぽけっとプロンプト by <a href="/about.html">Nuts</a>
     &nbsp;｜&nbsp;<a href="/about.html">運営者情報</a></p>`;
 
   // ===== 置き換え処理 =====
